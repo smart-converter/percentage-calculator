@@ -3,77 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Percentage Calculator - Professional Dark Edition</title>
+    <title>Percentage Calculator PRO - Dark Edition</title>
     <style>
         :root { 
             --bg: #0f172a; --card-bg: #1e293b; --text: #f8fafc; 
             --accent: #38bdf8; --success: #22c55e; --danger: #ef4444; 
         }
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; margin: 0; padding: 0; background-color: var(--bg); color: var(--text); line-height: 1.6; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; margin: 0; padding: 0; background-color: var(--bg); color: var(--text); line-height: 1.6; overflow-x: hidden; }
         
-        .header { background: #1e293b; padding: 20px 30px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #334155; }
-        .header h1 { margin: 0; font-size: 30px; font-weight: 900; color: var(--accent); letter-spacing: -1px; text-transform: uppercase; }
+        /* Шапка з великим шрифтом для вибору мов */
+        .header { background: #1e293b; padding: 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #334155; flex-wrap: wrap; gap: 15px; }
+        .header h1 { margin: 0; font-size: 26px; font-weight: 900; color: var(--accent); text-transform: uppercase; letter-spacing: -1px; }
         
-        .lang-select { background: #334155; color: white; border: 1px solid var(--accent); padding: 8px 15px; border-radius: 8px; cursor: pointer; font-weight: bold; }
+        .lang-select { background: #334155; color: white; border: 2px solid var(--accent); padding: 10px 18px; border-radius: 10px; cursor: pointer; font-weight: 900; font-size: 18px; outline: none; }
 
-        .container { max-width: 800px; margin: 20px auto; padding: 0 15px; }
+        .container { max-width: 800px; margin: 15px auto; padding: 0 15px; box-sizing: border-box; }
         
-        .calc-card { background: var(--card-bg); border: 1px solid #334155; border-radius: 16px; padding: 25px; margin-bottom: 15px; transition: all 0.3s ease; box-shadow: 0 4px 20px rgba(0,0,0,0.3); }
-        .calc-card:hover { border-color: var(--accent); box-shadow: 0 0 15px rgba(56, 189, 248, 0.2); }
+        .calc-card { background: var(--card-bg); border: 1px solid #334155; border-radius: 20px; padding: 25px; margin-bottom: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.4); }
         
-        /* Більші заголовки */
-        .calc-card h3 { margin: 0 0 20px 0; font-size: 22px; color: var(--text); font-weight: 800; border-left: 4px solid var(--accent); padding-left: 15px; }
+        /* Великі заголовки */
+        .calc-card h3 { margin: 0 0 20px 0; font-size: 24px; color: var(--accent); font-weight: 900; line-height: 1.2; }
         
-        .calc-row { display: flex; align-items: center; gap: 15px; flex-wrap: wrap; }
-        .input-group { display: flex; align-items: center; gap: 10px; font-weight: 600; font-size: 18px; }
+        /* Адаптивні рядки - нічого не з'їжджає */
+        .calc-row { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+        .input-group { display: flex; align-items: center; gap: 8px; font-weight: 700; font-size: 18px; white-space: nowrap; }
         
-        .input-box { width: 110px; padding: 12px; border: 2px solid #475569; border-radius: 10px; font-size: 20px; font-weight: 800; background: #0f172a; color: white; outline: none; transition: 0.2s; }
-        .input-box:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.3); }
+        .input-box { width: 110px; padding: 14px; border: 2px solid #475569; border-radius: 12px; font-size: 20px; font-weight: 800; background: #0f172a; color: white; outline: none; box-sizing: border-box; }
+        .input-box:focus { border-color: var(--accent); box-shadow: 0 0 15px rgba(56, 189, 248, 0.2); }
         
-        .res-box { min-width: 120px; padding: 12px; border: 2px solid var(--success); border-radius: 10px; font-size: 22px; font-weight: 900; background: rgba(34, 197, 94, 0.1); color: var(--success); text-align: center; }
+        .res-box { min-width: 130px; padding: 14px; border: 2px solid var(--success); border-radius: 12px; font-size: 22px; font-weight: 900; background: rgba(34, 197, 94, 0.15); color: var(--success); text-align: center; box-sizing: border-box; }
         
-        .ad-space { background: rgba(255,255,255,0.03); border: 1px dashed #475569; padding: 20px; text-align: center; margin: 20px 0; font-size: 12px; color: #94a3b8; border-radius: 12px; }
+        .ad-space { background: rgba(255,255,255,0.03); border: 1px dashed #475569; padding: 20px; text-align: center; margin: 25px 0; font-size: 12px; color: #64748b; border-radius: 15px; text-transform: uppercase; }
         
-        .seo-text { padding: 30px; font-size: 16px; color: #cbd5e1; background: var(--card-bg); border-radius: 16px; margin-top: 30px; border: 1px solid #334155; }
-        .seo-text h2 { color: var(--accent); font-size: 24px; font-weight: 900; }
+        .seo-text { padding: 30px; font-size: 16px; color: #cbd5e1; background: var(--card-bg); border-radius: 20px; margin-top: 30px; border: 1px solid #334155; }
+        .seo-text h2 { color: var(--accent); font-size: 26px; font-weight: 900; margin-top: 0; }
         
-        footer { text-align: center; padding: 50px 20px; background: #0f172a; border-top: 1px solid #334155; color: #94a3b8; }
-        .footer-link { color: var(--accent); cursor: pointer; text-decoration: none; margin: 0 15px; font-weight: 800; }
-        .footer-link:hover { text-decoration: underline; }
-        
-        .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); backdrop-filter: blur(8px); overflow-y: auto; }
-        .modal-content { background: var(--card-bg); margin: 40px auto; padding: 40px; width: 90%; max-width: 700px; border-radius: 20px; border: 1px solid var(--accent); color: #e2e8f0; }
-        .close { position: absolute; right: 25px; top: 15px; font-size: 40px; cursor: pointer; color: #64748b; }
+        footer { text-align: center; padding: 50px 20px; background: #0f172a; border-top: 1px solid #334155; margin-top: 40px; }
+        .footer-link { color: var(--accent); cursor: pointer; text-decoration: none; margin: 0 15px; font-weight: 800; font-size: 16px; }
 
-        @media (max-width: 600px) { .calc-row { flex-direction: column; align-items: stretch; } .input-box { width: 100%; } }
+        /* Модалка з виправленою "Х" */
+        .modal { display: none; position: fixed; z-index: 10000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); backdrop-filter: blur(10px); overflow-y: auto; }
+        .modal-content { background: var(--card-bg); margin: 50px auto; padding: 40px; width: 90%; max-width: 700px; border-radius: 25px; border: 2px solid var(--accent); position: relative; box-sizing: border-box; }
+        .close { position: absolute; right: 20px; top: 10px; font-size: 45px; cursor: pointer; color: #64748b; font-weight: 300; line-height: 1; }
+        .close:hover { color: white; }
+
+        /* Мобільна адаптація - щоб кнопки ставали в стовпчик на малих екранах */
+        @media (max-width: 650px) {
+            .calc-row { flex-direction: column; align-items: stretch; }
+            .input-group { flex-wrap: wrap; justify-content: flex-start; }
+            .input-box, .res-box { width: 100%; }
+            .header h1 { font-size: 22px; }
+        }
     </style>
 </head>
 <body>
 
 <div class="header">
-    <h1 id="main-title">Percentage Calc</h1>
+    <h1 id="main-title">PRO Percentage</h1>
     <select class="lang-select" onchange="setLang(this.value)" id="langPicker">
-        <option value="en">English</option>
-        <option value="uk">Українська</option>
-        <option value="es">Español</option>
-        <option value="de">Deutsch</option>
+        <option value="en">ENGLISH</option>
+        <option value="uk">УКРАЇНСЬКА</option>
+        <option value="es">ESPAÑOL</option>
+        <option value="de">DEUTSCH</option>
     </select>
 </div>
 
 <div class="container">
-    <div class="ad-space">ADVERTISEMENT</div>
+    <div class="ad-space">Google AdSense Space</div>
 
     <div class="calc-card">
-        <h3 id="h3-t1">Find Percentage</h3>
+        <h3 id="h3-t1">What is X% of Y?</h3>
         <div class="calc-row">
-            <div class="input-group"><span id="t1-1">What is</span> <input type="number" id="t1-p" class="input-box" oninput="calc1()"> <span id="t1-2">% of</span></div>
-            <div class="input-group"><input type="number" id="t1-v" class="input-box" oninput="calc1()"> <span>=</span></div>
-            <input type="text" id="t1-res" class="res-box" readonly>
+            <div class="input-group"><span id="t1-1">Calculate</span> <input type="number" id="t1-p" class="input-box" oninput="calc1()" placeholder="%"> <span id="t1-2">% of</span></div>
+            <div class="input-group"><input type="number" id="t1-v" class="input-box" oninput="calc1()" placeholder="Val"> <span>=</span></div>
+            <input type="text" id="t1-res" class="res-box" readonly placeholder="Result">
         </div>
     </div>
 
     <div class="calc-card">
-        <h3 id="h3-t2">Ratio Analysis</h3>
+        <h3 id="h3-t2">X is what % of Y?</h3>
         <div class="calc-row">
             <div class="input-group"><input type="number" id="t2-v1" class="input-box" oninput="calc2()"> <span id="t2-1">is what % of</span></div>
             <div class="input-group"><input type="number" id="t2-v2" class="input-box" oninput="calc2()"> <span>=</span></div>
@@ -82,10 +90,10 @@
     </div>
 
     <div class="calc-card">
-        <h3 id="h3-t3">Price Change</h3>
+        <h3 id="h3-t3">Percentage change</h3>
         <div class="calc-row">
             <div class="input-group"><span id="t3-1">From</span> <input type="number" id="t3-v1" class="input-box" oninput="calc3()"> <span id="t3-2">to</span></div>
-            <div class="input-group"><input type="number" id="t3-v2" class="input-box" oninput="calc3()"> <span id="t3-3">is:</span></div>
+            <div class="input-group"><input type="number" id="t3-v2" class="input-box" oninput="calc3()"> <span id="t3-3">is change:</span></div>
             <input type="text" id="t3-res" class="res-box" readonly>
         </div>
     </div>
@@ -94,7 +102,7 @@
 </div>
 
 <footer>
-    <p id="footer-copy">© 2025 PercentageCalculator.io - Premium Tool</p>
+    <p id="footer-copy">© 2025 PercentageCalculator.io</p>
     <div style="margin-top:20px;">
         <span class="footer-link" onclick="openModal('privacy')" id="link-priv">Privacy Policy</span>
         <span class="footer-link" onclick="openModal('terms')" id="link-terms">Terms of Use</span>
@@ -111,44 +119,44 @@
 <script>
 const data = {
     en: {
-        title: "Pro % Calc",
-        h1: "Find Percentage Value", h2: "Number Ratio to %", h3: "Percentage Change Rate",
+        title: "PRO Percentage",
+        h1: "Find percentage of a value", h2: "Number to percentage ratio", h3: "Percentage increase/decrease",
         t1_1: "What is", t1_2: "% of", t2_1: "is what % of", t3_1: "From", t3_2: "to", t3_3: "result:",
-        seo: `<h2>Advanced Percentage Solutions</h2><p>Our professional <strong>Percentage Calculator</strong> is optimized for business and personal finance. Calculate sales tax, investment ROI, and discounts with high-speed algorithms.</p><h2>How It Works</h2><p>We provide three modes: finding a specific portion, determining the ratio between two figures, and calculating growth or decline rates.</p>`,
-        privText: `<h2>Privacy Policy</h2><p>This Privacy Policy explains how we manage data. At PercentageCalculator.io, we prioritize your anonymity. We do not collect personal identifiers like names, emails, or phone numbers. Our website uses industry-standard HTTPS encryption to ensure a secure connection.</p><p>We use third-party services like Google AdSense to serve advertisements. These services may use cookies to show ads based on your interests. By using our site, you consent to this data processing for a better user experience.</p>`,
-        termsText: `<h2>Terms of Service</h2><p>Welcome to PercentageCalculator.io. By accessing this website, you agree to comply with our Terms of Use. All calculations and tools provided here are for informational purposes only. We strive for 100% accuracy, but we are not legally responsible for any financial losses or errors resulting from the use of our calculators.</p><p>Users are prohibited from using automated scripts or scrapers to extract data or code from this website. The intellectual property of the tool belongs to the site owners.</p>`
+        seo: `<h2>Advanced Percentage Calculator</h2><p>Our professional <strong>Percentage Calculator</strong> provides fast and accurate results for any mathematical task. Whether you need to find sales tax, interest rates, or investment ROI, our tool is optimized for efficiency.</p><h2>Accuracy in Every Calculation</h2><p>Used by students, business professionals, and financial analysts worldwide, this tool ensures that your calculations for discounts and markups are 100% correct every time.</p>`,
+        privText: `<h2>Privacy Policy</h2><p>At PercentageCalculator.io, we respect your privacy. This site does not collect personal data such as names or emails. We use Google AdSense cookies to deliver personalized ads. Your connection is secured with HTTPS encryption to ensure a safe browsing experience.</p>`,
+        termsText: `<h2>Terms of Service</h2><p>By using this calculator, you agree that the results are for informational purposes only. We are not responsible for any financial decisions or errors. Commercial scraping or unauthorized use of our code is prohibited.</p>`
     },
     uk: {
         title: "PRO % Калькулятор",
-        h1: "Розрахунок % від числа", h2: "Відсоткове співвідношення", h3: "Динаміка зміни (різниця)",
+        h1: "Знайти відсоток від числа", h2: "Відсоткове співвідношення", h3: "Розрахунок зростання/падіння",
         t1_1: "Скільки буде", t1_2: "% від", t2_1: "це який % від", t3_1: "З", t3_2: "до", t3_3: "зміна:",
-        seo: `<h2>Професійний розрахунок відсотків</h2><p>Наш інструмент створений для тих, кому потрібна швидкість і точність. Рахуйте ПДВ, маржу або знижки за лічені секунди.</p><h2>Функціонал</h2><p>Використовуйте три основні модулі: знаходження частини, частка від цілого та розрахунок зростання/падіння ціни.</p>`,
-        privText: `<h2>Політика конфіденційності</h2><p>Ваша конфіденційність є нашим пріоритетом. Цей сайт не збирає особисту інформацію, таку як імена або адреси електронної пошти. Ми використовуємо файли cookie через сервіс Google AdSense для показу персоналізованої реклами.</p><p>Всі дані про ваше перебування на сайті обробляються анонімно. Використовуючи наш ресурс, ви погоджуєтеся на використання кукі-файлів для покращення роботи сервісу.</p>`,
-        termsText: `<h2>Умови використання</h2><p>Користуючись PercentageCalculator.io, ви погоджуєтеся з наступними умовами. Весь контент та обчислювальні алгоритми надаються виключно для ознайомлювальних цілей. Ми не несемо відповідальності за будь-які фінансові наслідки або помилки в розрахунках.</p><p>Заборонено використовувати автоматизовані системи (боти, скрипти) для копіювання коду або масового збору даних з цього сайту. Ми залишаємо за собою право оновлювати алгоритми без попередження.</p>`
+        seo: `<h2>Найкращий калькулятор відсотків онлайн</h2><p>Наш професійний інструмент створений для швидких і точних розрахунків. Рахуйте ПДВ, знижки, маржу або банківські відсотки в один клік.</p><h2>Чому обирають нас?</h2><p>Ми забезпечуємо миттєві результати та підтримуємо три найпопулярніші режими розрахунків для навчання та бізнесу.</p>`,
+        privText: `<h2>Політика конфіденційності</h2><p>Ми дбаємо про вашу анонімність. Сайт не збирає персональні дані. Файли cookie використовуються виключно сервісом Google AdSense для показу реклами. Ваше з'єднання захищено зашифрованим протоколом HTTPS.</p>`,
+        termsText: `<h2>Умови використання</h2><p>Результати обчислень мають довідковий характер. Ми не несемо відповідальності за фінансові рішення, прийняті на основі роботи калькулятора. Заборонено автоматичне копіювання контенту.</p>`
     },
     es: {
-        title: "Calculadora PRO",
-        h1: "Calcular Porcentaje", h2: "Relación de Números", h3: "Tasa de Cambio",
+        title: "PRO Porcentaje",
+        h1: "Calcular porcentaje de un valor", h2: "Relación numérica a %", h3: "Aumento o disminución en %",
         t1_1: "Cuánto es el", t1_2: "% de", t2_1: "es qué % de", t3_1: "De", t3_2: "a", t3_3: "es:",
-        seo: `<h2>Calculadora de Porcentajes Elite</h2><p>Optimice sus cálculos financieros con nuestra herramienta de alta precisión. Ideal para negocios y estudiantes.</p>`,
-        privText: `<h2>Política de Privacidad</h2><p>En PercentageCalculator.io, respetamos su privacidad. No recopilamos información personal identificable. Utilizamos cookies de terceros, como Google AdSense, para mostrar anuncios relevantes basados en sus visitas anteriores.</p><p>Su navegación es segura gracias al cifrado HTTPS. Al utilizar nuestro sitio, usted acepta el uso de estas tecnologías para mejorar la calidad del servicio publicitario y funcional.</p>`,
-        termsText: `<h2>Términos de Servicio</h2><p>Al acceder a este sitio web, usted acepta cumplir con estos Términos de Uso. Los resultados proporcionados por nuestras herramientas son solo para fines informativos. No nos hacemos responsables de pérdidas financieras o errores derivados del uso de nuestra calculadora.</p><p>Está prohibido el uso de herramientas automáticas para extraer contenido o código de este sitio. Nos reservamos el derecho de modificar estos términos en cualquier momento para mejorar la experiencia del usuario.</p>`
+        seo: `<h2>Calculadora de Porcentajes Profesional</h2><p>Resuelva problemas matemáticos complejos en segundos. Ideal para impuestos, finanzas corporativas y tareas académicas.</p>`,
+        privText: `<h2>Política de Privacidad</h2><p>Respetamos su privacidad. No recopilamos información personal. Utilizamos cookies de Google AdSense para personalizar anuncios. Su navegación es segura gracias al cifrado HTTPS.</p>`,
+        termsText: `<h2>Términos de Uso</h2><p>Al utilizar este sitio, acepta que los resultados son informativos. No nos hacemos responsables de pérdidas financieras. Queda prohibida la extracción automática de datos.</p>`
     },
     de: {
-        title: "Prozentrechner PRO",
-        h1: "Prozentwert berechnen", h2: "Prozentuales Verhältnis", h3: "Preisänderung (%)",
+        title: "PRO Prozentrechner",
+        h1: "Prozentwert einer Zahl finden", h2: "Verhältnis in Prozent", h3: "Steigerung oder Senkung %",
         t1_1: "Was sind", t1_2: "% von", t2_1: "ist wie viel % von", t3_1: "Von", t3_2: "auf", t3_3: "ist:",
-        seo: `<h2>Premium Prozentrechner Online</h2><p>Präzise Ergebnisse für Business und Alltag. Berechnen Sie Steuern und Rabatte sofort.</p>`,
-        privText: `<h2>Datenschutzrichtlinie</h2><p>Der Schutz Ihrer Daten ist uns wichtig. PercentageCalculator.io sammelt keine personenbezogenen Daten wie Namen oder E-Mail-Adressen. Wir verwenden Google AdSense Cookies, um Anzeigen basierend auf Ihren Interessen zu schalten.</p><p>Ihre Verbindung zu unserer Website ist durch HTTPS verschlüsselt. Mit der Nutzung unserer Website erklären Sie sich mit der Verwendung von Cookies einverstanden, um die Benutzererfahrung zu optimieren.</p>`,
-        termsText: `<h2>Nutzungsbedingungen</h2><p>Durch die Nutzung dieser Website erklären Sie sich mit unseren Bedingungen einverstanden. Alle Berechnungen dienen nur zu Informationszwecken. Wir übernehmen keine Haftung für finanzielle Entscheidungen oder Rechenfehler, die durch die Nutzung dieses Tools entstehen.</p><p>Die Verwendung von automatisierten Skripten zum Auslesen von Daten oder Code von dieser Website ist strengstens untersagt. Wir behalten uns das Recht vor, die Algorithmen jederzeit anzupassen.</p>`
+        seo: `<h2>Premium Prozentrechner Online</h2><p>Berechnen Sie Rabatte, Zinsen und Steuern blitzschnell mit höchster Präzision. Das Tool für Profis und Studenten.</p>`,
+        privText: `<h2>Datenschutzrichtlinie</h2><p>Wir sammeln keine personenbezogenen Daten. Wir verwenden Google AdSense Cookies für Werbezwecke. Ihre Verbindung ist sicher über HTTPS verschlüsselt.</p>`,
+        termsText: `<h2>Nutzungsbedingungen</h2><p>Alle Berechnungen dienen nur der Information. Wir haften nicht für finanzielle Entscheidungen oder Rechenfehler. Automatisierte Datenabfragen sind untersagt.</p>`
     }
 };
 
-let cur = localStorage.getItem('lang_calc_dark') || 'en';
+let cur = localStorage.getItem('lang_v4') || 'en';
 
 function setLang(lang) {
     cur = lang;
-    localStorage.setItem('lang_calc_dark', lang);
+    localStorage.setItem('lang_v4', lang);
     const l = data[lang];
     document.getElementById('main-title').innerText = l.title;
     document.getElementById('h3-t1').innerText = l.h1;
@@ -160,7 +168,7 @@ function setLang(lang) {
     document.getElementById('t3-1').innerText = l.t3_1;
     document.getElementById('t3-2').innerText = l.t3_2;
     document.getElementById('t3-3').innerText = l.t3_3;
-    document.getElementById('footer-copy').innerText = l.title + " - © 2025";
+    document.getElementById('footer-copy').innerText = "© 2025 " + l.title;
     document.getElementById('link-priv').innerText = (lang==='uk'?'Конфіденційність':lang==='es'?'Privacidad':lang==='de'?'Datenschutz':'Privacy Policy');
     document.getElementById('link-terms').innerText = (lang==='uk'?'Умови':lang==='es'?'Términos':lang==='de'?'Bedingungen':'Terms of Use');
     document.getElementById('seo-content').innerHTML = l.seo;
