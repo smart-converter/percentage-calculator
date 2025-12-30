@@ -31,27 +31,35 @@
         .input-row { display: flex; align-items: center; justify-content: space-between; gap: 10px; font-weight: 800; font-size: 17px; }
         
         .input-box { flex: 1; padding: 16px; border: 2px solid #475569; border-radius: 14px; font-size: 19px; font-weight: 800; background: #0f172a; color: white; outline: none; width: 100%; box-sizing: border-box; }
-        .input-box:focus { border-color: var(--accent); }
         
         .res-box { width: 100%; padding: 16px; border: 2px solid var(--success); border-radius: 14px; font-size: 22px; font-weight: 900; background: rgba(34, 197, 94, 0.1); color: var(--success); text-align: center; box-sizing: border-box; margin-top: 5px; }
 
         .seo-text { padding: 40px 15px; font-size: 16px; color: #cbd5e1; border-top: 1px solid #334155; }
         .seo-text h2 { color: var(--accent); font-size: 28px; font-weight: 900; margin-bottom: 20px; text-align: center; }
 
-        footer { padding: 60px 20px; border-top: 1px solid #334155; background: #0f172a; display: flex; flex-direction: column; align-items: center; text-align: center; }
-        #footer-copy { font-weight: 900; color: var(--accent); font-size: 22px; margin-bottom: 15px; text-transform: uppercase; }
-        #footer-mission { font-size: 15px; color: #94a3b8; line-height: 1.8; margin-bottom: 30px; max-width: 600px; }
+        /* ВИПРАВЛЕНИЙ ФУТЕР - СТРОГО ПО ЦЕНТРУ */
+        footer { 
+            padding: 60px 20px; 
+            border-top: 1px solid #334155; 
+            background: #0f172a; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            text-align: center; 
+        }
+        #footer-copy { font-weight: 900; color: var(--accent); font-size: 22px; margin-bottom: 15px; text-transform: uppercase; width: 100%; }
+        #footer-mission { font-size: 15px; color: #94a3b8; line-height: 1.8; margin: 0 auto 30px auto; max-width: 600px; width: 100%; }
         
-        .footer-links { display: flex; justify-content: center; gap: 30px; margin-bottom: 30px; }
-        .footer-link { color: var(--text); font-weight: 800; font-size: 16px; cursor: pointer; border-bottom: 1px solid transparent; }
+        .footer-links { display: flex; justify-content: center; gap: 30px; margin-bottom: 30px; width: 100%; }
+        .footer-link { color: var(--text); font-weight: 800; font-size: 16px; cursor: pointer; text-decoration: none; }
 
         .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); backdrop-filter: blur(10px); }
-        .modal-content { background: var(--card-bg); margin: 10% auto; padding: 40px 30px; width: 90%; max-width: 550px; border-radius: 25px; border: 2px solid var(--accent); position: relative; }
+        .modal-content { background: var(--card-bg); margin: 10% auto; padding: 40px 30px; width: 90%; max-width: 550px; border-radius: 25px; border: 2px solid var(--accent); position: relative; text-align: center; }
         .close { position: absolute; right: 20px; top: 10px; font-size: 40px; color: #64748b; cursor: pointer; }
 
         @media (max-width: 600px) {
             .header h1 { font-size: 22px; }
-            .modal-content { margin: 20% auto; }
+            .footer-links { gap: 20px; }
         }
     </style>
 </head>
@@ -123,8 +131,8 @@ const data = {
         mission: "Our global mission is to provide the fastest, most reliable and extremely accurate financial calculation tools for everyone. From high school students to professional wall street traders, we make complex mathematics simple, accessible, and completely intuitive for every single user worldwide. We believe in the power of precision and speed for every calculation you make on our platform.",
         privLabel: "Privacy Policy", termsLabel: "Terms of Use",
         seo: `<h2>Advanced Percentage Solutions</h2><p>Our professional Percentage Calculator is optimized for both business and personal finance. Calculate sales tax, investment ROI, and discounts with high-speed algorithms designed for modern web standards.</p>`,
-        privText: `<h2>Privacy Policy</h2><p>Your privacy is our absolute priority. We do not collect, store, or share any personal data or calculation history. Our tool operates entirely on your local device, ensuring that your financial data remains 100% private, secure, and anonymous at all times while using our services.</p><p>We use industry-standard security protocols to ensure your browser experience is safe.</p>`,
-        termsText: `<h2>Terms of Service</h2><p>All calculations provided by this website are for informational and educational purposes only. While we strive for 100% mathematical accuracy through rigorous testing, we are not responsible for any financial decisions, losses, or actions taken based on these results. Users are encouraged to verify critical data independently.</p>`
+        privText: `<h2>Privacy Policy</h2><p>Your privacy is our absolute priority. We do not collect, store, or share any personal data or calculation history. Our tool operates entirely on your local device, ensuring that your financial data remains 100% private, secure, and anonymous at all times while using our services.</p>`,
+        termsText: `<h2>Terms of Service</h2><p>All calculations provided by this website are for informational and educational purposes only. While we strive for 100% mathematical accuracy through rigorous testing, we are not responsible for any financial decisions, losses, or actions taken based on these results.</p>`
     },
     uk: {
         title: "PRO % КАЛЬКУЛЯТОР", h1: "Розрахунок % від числа", h2: "Відсоткове співвідношення", h3: "Динаміка зміни",
@@ -132,8 +140,8 @@ const data = {
         mission: "Наша глобальна місія — надати кожному користувачу найшвидші та найточніші фінансові інструменти. Від студентів до професійних трейдерів, ми робимо складну математику простою, доступною та зрозумілою для кожного в усьому світі. Ми віримо, що точність кожного розрахунку є фундаментом для прийняття правильних фінансових рішень у сучасному динамічному світі.",
         privLabel: "Конфіденційність", termsLabel: "Умови використання",
         seo: `<h2>Професійний розрахунок відсотків</h2><p>Наш інструмент створений для тих, кому потрібна максимальна швидкість і точність. Рахуйте ПДВ, маржу або складні знижки за лічені секунди без зайвих зусиль та реєстрацій.</p>`,
-        privText: `<h2>Політика конфіденційності</h2><p>Ваша приватність є нашим головним пріоритетом. Ми принципово не збираємо ваші персональні дані, IP-адреси або історію розрахунків. Всі обчислення відбуваються виключно на вашому пристрої, що гарантує повну анонімність, безпеку та конфіденційність ваших фінансових операцій у будь-який час.</p><p>Ми використовуємо лише локальні ресурси вашого браузера для роботи калькулятора.</p>`,
-        termsText: `<h2>Умови використання</h2><p>Результати розрахунків на цьому сайті мають виключно інформаційний та ознайомчий характер. Ми не несемо відповідальності за будь-які фінансові рішення, збитки або ризики, що можуть виникнути внаслідок використання цих даних. Користувач несе повну відповідальність за перевірку результатів перед прийняттям важливих рішень.</p>`
+        privText: `<h2>Політика конфіденційності</h2><p>Ваша приватність є нашим головним пріоритетом. Ми принципово не збираємо ваші персональні дані, IP-адреси або історію розрахунків. Всі обчислення відбуваються виключно на вашому пристрої, що гарантує повну анонімність, безпеку та конфіденційність ваших фінансових операцій.</p>`,
+        termsText: `<h2>Умови використання</h2><p>Результати розрахунків на цьому сайті мають виключно інформаційний та ознайомчий характер. Ми не несемо відповідальності за будь-які фінансові збитки, збитки або ризики, що можуть виникнути внаслідок використання цих даних.</p>`
     },
     es: {
         title: "PRO % CALCULADORA", h1: "Calcular Porcentaje", h2: "Relación de Números", h3: "Tasa de Cambio",
@@ -141,8 +149,8 @@ const data = {
         mission: "Nuestra misión global es proporcionar las herramientas financieras más rápidas, confiables y extremadamente precisas para todos. Desde estudiantes de secundaria hasta operadores profesionales, hacemos que las matemáticas complejas sean simples, accesibles y completamente intuitivas para cada usuario en todo el mundo. Creemos firmemente en la importancia de la precisión y la velocidad en cada cálculo financiero diario.",
         privLabel: "Privacidad", termsLabel: "Términos de Uso",
         seo: `<h2>Calculadora de Porcentajes Elite</h2><p>Optimice sus cálculos financieros con nuestra herramienta de alta precisión. Ideal para negocios, análisis de mercado y finanzas personales. Calcule impuestos, ROI y descuentos con algoritmos de alta velocidad.</p>`,
-        privText: `<h2>Política de Privacidad</h2><p>Su privacidad es nuestra prioridad absoluta. No recopilamos, almacenamos ni compartimos ningún tipo de dato personal o historial de sus cálculos. Nuestra herramienta funciona localmente en su navegador, lo que garantiza que sus datos financieros permanezcan 100% privados, seguros y anónimos en todo momento mientras utiliza nuestros servicios gratuitos.</p><p>Cumplimos con los estándares de seguridad web más estrictos.</p>`,
-        termsText: `<h2>Términos de Servicio</h2><p>Todos los cálculos proporcionados por este sitio web son solo para fines informativos y educativos. Aunque nos esforzamos por lograr una precisión matemática total, no somos responsables de ninguna decisión financiera, pérdida o acción tomada en función de estos resultados. Se recomienda a los usuarios verificar los datos de manera independiente.</p>`
+        privText: `<h2>Política de Privacidad</h2><p>Su privacidad es nuestra prioridad absoluta. No recopilamos, almacenamos ni compartimos ningún tipo de dato personal o historial de sus cálculos. Nuestra herramienta funciona localmente en su navegador, lo que garantiza que sus datos financieros permanezcan 100% privados y seguros en todo momento.</p>`,
+        termsText: `<h2>Términos de Servicio</h2><p>Todos los cálculos proporcionados por este sitio web son solo para fines informativos y educativos. Aunque nos esforzamos por lograr una precisión matemática total, no somos responsables de ninguna decisión financiera o pérdida basada en estos resultados.</p>`
     },
     de: {
         title: "PRO % RECHNER", h1: "Prozentwert finden", h2: "Verhältnis in %", h3: "Änderungsrate",
@@ -150,8 +158,8 @@ const data = {
         mission: "Unsere globale Mission ist es, jedem Benutzer die schnellsten, zuverlässigsten und präzisesten Finanzberechnungstools zur Verfügung zu stellen. Von Schülern bis hin zu professionellen Händlern machen wir komplexe Mathematik einfach, zugänglich und intuitiv für jeden Benutzer weltweit. Wir glauben an die Kraft von Präzision und Geschwindigkeit bei jeder einzelnen Berechnung, die Sie auf unserer Plattform durchführen.",
         privLabel: "Datenschutz", termsLabel: "Bedingungen",
         seo: `<h2>Premium Prozentrechner Online</h2><p>Präzise Ergebnisse für Business und Alltag. Berechnen Sie Steuern, Rabatte und Zinsen sofort mit unseren hocheffizienten Algorithmen, die für maximale Genauigkeit und Geschwindigkeit entwickelt wurden.</p>`,
-        privText: `<h2>Datenschutzerklärung</h2><p>Ihre Privatsphäre hat für uns oberste Priorität. Wir sammeln, speichern oder teilen keine personenbezogenen Daten oder den Verlauf Ihrer Berechnungen. Unser Tool läuft vollständig lokal auf Ihrem Gerät, sodass Ihre Finanzdaten jederzeit zu 100% privat, sicher und anonym bleiben, während Sie unsere Dienste nutzen.</p><p>Wir garantieren eine sichere Nutzung ohne Datenspeicherung in der Cloud.</p>`,
-        termsText: `<h2>Nutzungsbedingungen</h2><p>Alle von dieser Website bereitgestellten Berechnungen dienen ausschließlich Informations- und Bildungszwecken. Obwohl wir durch strenge Tests eine 100%ige mathematische Genauigkeit anstreben, haften wir nicht für finanzielle Entscheidungen, Verluste oder Maßnahmen, die auf diesen Ergebnissen basieren. Nutzer sollten wichtige Daten stets unabhängig prüfen.</p>`
+        privText: `<h2>Datenschutzerklärung</h2><p>Ihre Privatsphäre hat für uns oberste Priorität. Wir sammeln, speichern oder teilen keine personenbezogenen Daten oder den Verlauf Ihrer Berechnungen. Unser Tool läuft vollständig lokal auf Ihrem Gerät, sodass Ihre Finanzdaten jederzeit zu 100% privat und sicher bleiben.</p>`,
+        termsText: `<h2>Nutzungsbedingungen</h2><p>Alle von dieser Website bereitgestellten Berechnungen dienen ausschließlich Informations- und Bildungszwecken. Obwohl wir eine 100%ige mathematische Genauigkeit anstreben, haften wir nicht für finanzielle Entscheidungen oder Verluste, die auf diesen Ergebnissen basieren.</p>`
     }
 };
 
@@ -206,7 +214,6 @@ function openModal(type) {
 }
 
 function closeModal() { document.getElementById('modal').style.display = 'none'; }
-
 setLang('uk');
 </script>
 </body>
