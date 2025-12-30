@@ -42,7 +42,7 @@
         .seo-text { padding: 40px 15px; font-size: 16px; color: #cbd5e1; line-height: 1.8; border-top: 1px solid #334155; }
         .seo-text h2 { color: var(--accent); font-size: 28px; font-weight: 900; margin-bottom: 20px; text-align: center; }
 
-        /* ФУТЕР - ФІКСАЦІЯ ЦЕНТРУВАННЯ */
+        /* ФУТЕР - ЗАЛІЗНЕ ЦЕНТРУВАННЯ */
         footer { 
             padding: 60px 20px; 
             border-top: 1px solid #334155; 
@@ -164,6 +164,12 @@
 </div>
 
 <script>
+// ПРИМУСОВЕ ОЧИЩЕННЯ СТАРИХ ДАНИХ (щоб завантажити нові тексти футера)
+if (!localStorage.getItem('force_update_v14')) {
+    localStorage.clear();
+    localStorage.setItem('force_update_v14', 'true');
+}
+
 const data = {
     en: {
         title: "PRO % CALCULATOR", h1: "Find Percentage Value", h2: "Number Ratio to %", h3: "Percentage Change Rate",
@@ -203,11 +209,11 @@ const data = {
     }
 };
 
-let cur = localStorage.getItem('lang_v13_final') || 'uk';
+let cur = localStorage.getItem('lang_current') || 'uk';
 
 function setLang(lang) {
     cur = lang;
-    localStorage.setItem('lang_v13_final', lang);
+    localStorage.setItem('lang_current', lang);
     const l = data[lang] || data['en'];
     
     document.getElementById('main-title').innerText = l.title;
@@ -262,3 +268,4 @@ setLang(cur);
 </script>
 </body>
 </html>
+
