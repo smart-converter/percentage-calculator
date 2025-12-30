@@ -49,7 +49,7 @@
             background: #0f172a; 
             display: flex; 
             flex-direction: column; 
-            align-items: center; /* Центрує по горизонталі */
+            align-items: center; 
             justify-content: center;
             text-align: center; 
             width: 100%;
@@ -66,7 +66,7 @@
         .contact-info { font-size: 14px; color: #64748b; font-weight: 700; margin-top: 10px; line-height: 1.5; }
         .copyright-tag { margin-top: 30px; color: #475569; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
 
-        /* МОДАЛЬНЕ ВІКНО - ФІКСАЦІЯ ЦЕНТРУВАННЯ */
+        /* МОДАЛЬНЕ ВІКНО */
         .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.92); backdrop-filter: blur(10px); }
         .modal-content { 
             background: var(--card-bg); 
@@ -80,7 +80,7 @@
             color: #e2e8f0; 
             display: flex;
             flex-direction: column;
-            align-items: center; /* Центрує все всередині */
+            align-items: center; 
             text-align: center;
             box-sizing: border-box;
         }
@@ -186,28 +186,28 @@ const data = {
     es: {
         title: "PRO % CALCULADORA", h1: "Calcular Porcentaje", h2: "Relación de Números", h3: "Tasa de Cambio %",
         t1_1: "Qué es el", t1_2: "% de", t2_1: "es qué % de", t3_1: "De", t3_2: "a",
-        mission: "Nuestra misión es proporcionar las herramientas financieras más rápidas y precisas para todos. Hacemos que las matemáticas complejas sean simples.",
+        mission: "Nuestra misión es proporcionar las herramientas financieras más rápidas y precisas para todos. Hacemos que las matemáticas complejas sean simples, accesibles y comprensibles para todos los usuarios en todo el mundo.",
         privLabel: "Privacidad", termsLabel: "Términos",
         seo: `<h2>Calculadora de Porcentajes Elite</h2><p>Optimice sus cálculos financieros con nuestra herramienta de alta precisión. Ideal para negocios y estudiantes.</p>`,
-        privText: `<h2>Política de Privacidad</h2><p>No recopilamos información personal. Tu privacidad está garantizada. Nuestra herramienta funciona localmente en su navegador.</p>`,
-        termsText: `<h2>Términos de Uso</h2><p>Los resultados son informativos. No nos hacemos responsables de las decisiones financieras basadas en esta herramienta.</p>`
+        privText: `<h2>Política de Privacidad</h2><p>No recopilamos información personal. Tu privacidad está garantizada. Nuestra herramienta funciona localmente en su navegador y no comparte datos confidenciales.</p>`,
+        termsText: `<h2>Términos de Uso</h2><p>Los resultados son informativos. No nos hacemos responsables de las decisiones financieras basadas en esta herramienta. El uso de este sitio implica la aceptación de estas condiciones.</p>`
     },
     de: {
         title: "PRO % RECHNER", h1: "Prozentwert finden", h2: "Verhältnis in %", h3: "Preisänderung %",
         t1_1: "Was sind", t1_2: "% von", t2_1: "ist wie viel % von", t3_1: "Von", t3_2: "auf",
-        mission: "Unsere Mission ist es, jedem die schnellsten und genauesten Finanzinstrumente zur Verfügung zu stellen. Wir machen Mathe einfach.",
+        mission: "Unsere Mission ist es, jedem die schnellsten und genauesten Finanzinstrumente zur Verfügung zu stellen. Wir machen komplexe Mathematik für jeden Benutzer weltweit einfach, zugänglich und verständlich.",
         privLabel: "Datenschutz", termsLabel: "Bedingungen",
         seo: `<h2>Premium Prozentrechner Online</h2><p>Präzise Ergebnisse für Business und Alltag. Berechnen Sie Steuern und Rabatte sofort.</p>`,
-        privText: `<h2>Datenschutz</h2><p>Wir sammeln keine personenbezogenen Daten. Ihre Sicherheit ist uns wichtig. Alle Berechnungen erfolgen anonym.</p>`,
-        termsText: `<h2>Nutzungsbedingungen</h2><p>Alle Berechnungen ohne Gewähr. Die Ergebnisse dienen lediglich der Information und stellen keine Finanzberatung dar.</p>`
+        privText: `<h2>Datenschutz</h2><p>Wir sammeln keine personenbezogenen Daten. Ihre Sicherheit ist uns wichtig. Alle Berechnungen erfolgen anonym und sicher direkt in Ihrem Webbrowser.</p>`,
+        termsText: `<h2>Nutzungsbedingungen</h2><p>Alle Berechnungen ohne Gewähr. Die Ergebnisse dienen lediglich der Information und stellen keine Finanzberatung dar. Mit der Nutzung dieser Website stimmen Sie diesen Bedingungen zu.</p>`
     }
 };
 
-let cur = localStorage.getItem('lang_v11_fixed') || 'uk';
+let cur = localStorage.getItem('lang_v12_final') || 'uk';
 
 function setLang(lang) {
     cur = lang;
-    localStorage.setItem('lang_v11_fixed', lang);
+    localStorage.setItem('lang_v12_final', lang);
     const l = data[lang] || data['en'];
     
     document.getElementById('main-title').innerText = l.title;
