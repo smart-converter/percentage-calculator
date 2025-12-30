@@ -3,27 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Percentage Calculator - Quick & Accurate Online Tool</title>
+    <title>Percentage Calculator - Accurate Online Tool</title>
     <style>
-        body { font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; margin: 0; padding: 0; background-color: #f0f2f5; color: #333; line-height: 1.5; }
-        .header { background-color: #2c3e50; color: white; padding: 15px; display: flex; justify-content: space-between; align-items: center; }
-        .header h1 { margin: 0; font-size: 20px; }
-        .lang-select { background: #34495e; color: white; border: 1px solid #5d6d7e; padding: 5px; border-radius: 4px; cursor: pointer; }
-        .container { max-width: 700px; margin: 20px auto; padding: 15px; background: white; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-        .calc-section { border-bottom: 1px solid #eee; padding: 20px 0; }
-        .calc-section:last-child { border-bottom: none; }
-        .calc-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 10px; }
-        .input-box { width: 100px; padding: 8px; border: 1px solid #ccc; border-radius: 4px; font-size: 16px; font-weight: bold; }
-        .res-box { width: 120px; padding: 8px; border: 1px solid #27ae60; border-radius: 4px; font-size: 16px; font-weight: bold; background: #fafffa; color: #27ae60; text-align: center; }
-        .ad-space { background: #fff9db; border: 1px dashed #fab005; padding: 20px; text-align: center; margin: 15px 0; font-size: 12px; color: #868e96; border-radius: 6px; }
-        .seo-text { padding: 20px; font-size: 14px; color: #555; background: #fafafa; margin-top: 20px; border-radius: 8px; }
-        .seo-text h2 { color: #2c3e50; font-size: 18px; margin-top: 0; }
-        footer { text-align: center; padding: 20px; font-size: 12px; color: #777; border-top: 1px solid #eee; margin-top: 20px; }
-        .footer-links { margin-top: 10px; }
-        .footer-links span { color: #3498db; cursor: pointer; text-decoration: underline; margin: 0 10px; font-weight: bold; }
-        .modal { display: none; position: fixed; z-index: 999; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); overflow-y: auto; }
-        .modal-content { background: white; margin: 10% auto; padding: 30px; width: 85%; max-width: 600px; border-radius: 10px; position: relative; }
-        .close { position: absolute; right: 20px; top: 10px; font-size: 30px; cursor: pointer; }
+        body { font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; margin: 0; padding: 0; background-color: #f4f7f6; color: #333; line-height: 1.6; }
+        .header { background-color: #2c3e50; color: white; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .header h1 { margin: 0; font-size: 22px; font-weight: 700; }
+        .lang-select { background: #34495e; color: white; border: 1px solid #5d6d7e; padding: 6px 10px; border-radius: 4px; cursor: pointer; font-size: 14px; }
+        .container { max-width: 800px; margin: 25px auto; padding: 20px; background: white; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        
+        .calc-card { background: #fff; border: 1px solid #e1e8ed; border-radius: 8px; padding: 20px; margin-bottom: 20px; transition: transform 0.2s; }
+        .calc-card:hover { border-color: #3498db; }
+        .calc-card h3 { margin-top: 0; font-size: 16px; color: #2c3e50; border-bottom: 2px solid #f0f2f5; padding-bottom: 10px; margin-bottom: 15px; }
+        
+        .calc-row { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+        .input-group { display: flex; align-items: center; gap: 8px; }
+        .input-box { width: 90px; padding: 10px; border: 2px solid #dee2e6; border-radius: 6px; font-size: 16px; font-weight: 700; outline: none; transition: border-color 0.3s; }
+        .input-box:focus { border-color: #3498db; }
+        .res-box { min-width: 100px; padding: 10px; border: 2px solid #27ae60; border-radius: 6px; font-size: 18px; font-weight: 800; background: #f0fff4; color: #27ae60; text-align: center; }
+        
+        .ad-space { background: #fff9db; border: 1px dashed #fab005; padding: 20px; text-align: center; margin: 20px 0; font-size: 12px; color: #868e96; border-radius: 8px; }
+        .seo-text { padding: 20px; font-size: 15px; color: #4f5b66; background: #f8f9fa; border-radius: 10px; border-top: 4px solid #2c3e50; }
+        .seo-text h2 { color: #2c3e50; font-size: 20px; margin-top: 15px; }
+        
+        footer { text-align: center; padding: 30px 20px; font-size: 13px; color: #666; border-top: 1px solid #eee; margin-top: 30px; }
+        .footer-links { margin-top: 15px; }
+        .footer-link { color: #3498db; cursor: pointer; text-decoration: underline; margin: 0 12px; font-weight: 600; }
+        
+        .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); overflow-y: auto; padding-top: 50px; }
+        .modal-content { background: white; margin: auto; padding: 30px; width: 90%; max-width: 650px; border-radius: 12px; position: relative; line-height: 1.7; }
+        .close { position: absolute; right: 20px; top: 10px; font-size: 35px; cursor: pointer; color: #999; }
+        @media (max-width: 600px) { .calc-row { flex-direction: column; align-items: flex-start; } .input-box { width: 100%; } }
     </style>
 </head>
 <body>
@@ -39,54 +48,49 @@
 </div>
 
 <div class="container">
-    <div class="ad-space">ADVERTISEMENT SPACE</div>
+    <div class="ad-space">ADVERTISEMENT AREA</div>
 
-    <div class="calc-section">
+    <div class="calc-card">
+        <h3 id="h3-t1">Find a percentage of a number</h3>
         <div class="calc-row">
-            <span id="t1-1">What is</span>
-            <input type="number" id="t1-p" class="input-box" placeholder="%" oninput="calc1()">
-            <span id="t1-2">% of</span>
-            <input type="number" id="t1-v" class="input-box" placeholder="Value" oninput="calc1()">
-            <span>=</span>
+            <div class="input-group"><span id="t1-1">What is</span> <input type="number" id="t1-p" class="input-box" oninput="calc1()"> <span id="t1-2">% of</span></div>
+            <div class="input-group"><input type="number" id="t1-v" class="input-box" oninput="calc1()"> <span>=</span></div>
             <input type="text" id="t1-res" class="res-box" readonly>
         </div>
     </div>
 
-    <div class="calc-section">
+    <div class="calc-card">
+        <h3 id="h3-t2">Determine percentage ratio</h3>
         <div class="calc-row">
-            <input type="number" id="t2-v1" class="input-box" oninput="calc2()">
-            <span id="t2-1">is what % of</span>
-            <input type="number" id="t2-v2" class="input-box" oninput="calc2()">
-            <span>=</span>
+            <div class="input-group"><input type="number" id="t2-v1" class="input-box" oninput="calc2()"> <span id="t2-1">is what % of</span></div>
+            <div class="input-group"><input type="number" id="t2-v2" class="input-box" oninput="calc2()"> <span>=</span></div>
             <input type="text" id="t2-res" class="res-box" readonly>
         </div>
     </div>
 
-    <div class="calc-section">
+    <div class="calc-card">
+        <h3 id="h3-t3">Percentage increase or decrease</h3>
         <div class="calc-row">
-            <span id="t3-1">From</span>
-            <input type="number" id="t3-v1" class="input-box" oninput="calc3()">
-            <span id="t3-2">to</span>
-            <input type="number" id="t3-v2" class="input-box" oninput="calc3()">
-            <span id="t3-3">is change:</span>
+            <div class="input-group"><span id="t3-1">From</span> <input type="number" id="t3-v1" class="input-box" oninput="calc3()"> <span id="t3-2">to</span></div>
+            <div class="input-group"><input type="number" id="t3-v2" class="input-box" oninput="calc3()"> <span id="t3-3">is:</span></div>
             <input type="text" id="t3-res" class="res-box" readonly>
         </div>
     </div>
 
-    <div class="ad-space">ADVERTISEMENT SPACE</div>
+    <div class="ad-space">ADVERTISEMENT AREA</div>
 
     <div class="seo-text" id="seo-content"></div>
 </div>
 
 <footer>
-    <p id="footer-copy">© 2025 PercentageCalculator.io - Fast & Reliable</p>
+    <p id="footer-copy">© 2025 PercentageCalculator.io - Accuracy & Speed</p>
     <div class="footer-links">
-        <span onclick="openModal('privacy')" id="link-priv">Privacy Policy</span>
-        <span onclick="openModal('terms')" id="link-terms">Terms of Use</span>
+        <span class="footer-link" onclick="openModal('privacy')" id="link-priv">Privacy Policy</span>
+        <span class="footer-link" onclick="openModal('terms')" id="link-terms">Terms of Use</span>
     </div>
 </footer>
 
-<div id="modal" class="modal">
+<div id="modal" class="modal" onclick="if(event.target == this) closeModal()">
     <div class="modal-content">
         <span class="close" onclick="closeModal()">&times;</span>
         <div id="modal-body"></div>
@@ -97,47 +101,39 @@
 const data = {
     en: {
         title: "Percentage Calculator",
-        t1_1: "What is", t1_2: "% of",
-        t2_1: "is what % of",
-        t3_1: "From", t3_2: "to", t3_3: "is change:",
-        footer: "© 2025 PercentageCalculator.io - Fast & Reliable",
-        priv: "Privacy Policy", terms: "Terms of Use",
-        seo: `<h2>Why Use an Online Percentage Calculator?</h2><p>Our <strong>Percentage Calculator</strong> is designed to solve all your math problems in seconds. Whether you are calculating <strong>sales tax, discounts, or investment growth</strong>, accuracy is vital. Instead of doing manual math, use our tool for error-free results.</p><h2>How to Calculate Percentages?</h2><p>Percentage calculations are part of everyday life. For example, finding a 20% discount on a $100 item means you save $20. Our tool covers three main types: finding a percentage of a number, finding the percentage ratio between two numbers, and calculating percentage increases or decreases.</p><h2>Perfect for Business and Education</h2><p>Students and business professionals alike benefit from fast calculations. Use our tool to calculate profit margins, interest rates, or simple school math problems.</p>`,
-        privText: `<h2>Privacy Policy</h2><p>We value your privacy. This site does not collect personal data. We use cookies for Google AdSense and settings memory. Your data remains safe and anonymous.</p>`,
-        termsText: `<h2>Terms of Use</h2><p>This tool is for informational purposes. While we strive for 100% accuracy, we are not responsible for financial decisions made based on these results. Use at your own risk.</p>`
+        h1: "Find a percentage of a number", h2: "Determine percentage ratio", h3: "Percentage increase or decrease",
+        t1_1: "What is", t1_2: "% of", t2_1: "is what % of", t3_1: "From", t3_2: "to", t3_3: "is:",
+        footer: "© 2025 PercentageCalculator.io - Accuracy & Speed", priv: "Privacy Policy", terms: "Terms of Use",
+        seo: `<h2>Why Use an Online Percentage Calculator?</h2><p>Our <strong>Percentage Calculator</strong> is designed to solve all your math problems in seconds. Whether you are calculating <strong>sales tax, discounts, or investment growth</strong>, accuracy is vital.</p><h2>How to Calculate Percentages?</h2><p>Percentage calculations are part of everyday life. For example, finding a 20% discount on a $100 item means you save $20. Our tool covers finding a percentage, ratio between numbers, and percentage increases.</p><h2>Perfect for Business</h2><p>Students and business professionals alike benefit from fast calculations. Use our tool to calculate profit margins, interest rates, or simple school math problems.</p><h2>Reliable and Free</h2><p>We provide a 100% free tool that works on any device. No registration required, just fast and accurate math for your daily needs.</p>`,
+        privText: `<h2>Privacy Policy</h2><p>We value your privacy. This site does not collect personal data. We use cookies for Google AdSense and settings memory.</p><ul><li>No names or emails required.</li><li>Standard HTTPS encryption.</li><li>Third-party ads by Google AdSense.</li></ul>`,
+        termsText: `<h2>Terms of Use</h2><p>By using this tool, you agree to:</p><ul><li>Results are for informational purposes only.</li><li>We are not liable for financial decisions.</li><li>No automated scraping allowed.</li></ul>`
     },
     uk: {
         title: "Калькулятор відсотків",
-        t1_1: "Скільки буде", t1_2: "% від",
-        t2_1: "це який % від",
-        t3_1: "Зміна з", t3_2: "до", t3_3: "це:",
-        footer: "© 2025 PercentageCalculator.io - Швидко та точно",
-        priv: "Конфіденційність", terms: "Умови використання",
-        seo: `<h2>Навіщо потрібен онлайн-калькулятор відсотків?</h2><p>Наш <strong>калькулятор відсотків</strong> створений для миттєвого вирішення математичних задач. Незалежно від того, чи рахуєте ви <strong>знижки, податки або прибуток від інвестицій</strong>, точність має значення.</p><h2>Як рахувати відсотки?</h2><p>Розрахунок відсотків — це частина нашого життя. Наприклад, знайти 20% знижки на товар за 100 грн означає зекономити 20 грн. Наш інструмент дозволяє знайти відсоток від числа, співвідношення чисел або відсоток зростання/падіння ціни.</p><h2>Для бізнесу та навчання</h2><p>Студенти та підприємці щодня стикаються з відсотками. Використовуйте наш сайт для швидкого розрахунку маржі, кредитів або шкільних завдань.</p>`,
-        privText: `<h2>Політика конфіденційності</h2><p>Ваша приватність важлива. Ми не збираємо імена чи e-mail. Ми використовуємо файли cookie для роботи реклами Google AdSense та збереження мовних налаштувань.</p>`,
-        termsText: `<h2>Умови використання</h2><p>Цей інструмент надається "як є". Ми не несемо відповідальності за фінансові втрати, пов'язані з помилками у розрахунках. Перевіряйте важливі дані самостійно.</p>`
+        h1: "Знайти відсоток від числа", h2: "Визначити відсоткове співвідношення", h3: "Відсоток зростання або падіння",
+        t1_1: "Скільки буде", t1_2: "% від", t2_1: "це який % від", t3_1: "З", t3_2: "до", t3_3: "зміна:",
+        footer: "© 2025 PercentageCalculator.io - Швидко та точно", priv: "Конфіденційність", terms: "Умови",
+        seo: `<h2>Навіщо потрібен онлайн-калькулятор відсотків?</h2><p>Наш <strong>калькулятор відсотків</strong> створений для миттєвого вирішення задач. Незалежно від того, чи рахуєте ви <strong>знижки, податки або прибуток</strong>, точність має значення.</p><h2>Як рахувати відсотки?</h2><p>Розрахунок відсотків — це частина нашого життя. Наприклад, знайти 20% знижки на товар за 100 грн означає зекономити 20 грн. Наш інструмент дозволяє знайти відсоток від числа або співвідношення чисел.</p><h2>Для бізнесу та навчання</h2><p>Студенти та підприємці щодня стикаються з відсотками. Використовуйте наш сайт для розрахунку маржі, кредитів або шкільних завдань.</p><h2>Безкоштовно та надійно</h2><p>Ми пропонуємо повністю безкоштовний інструмент, який працює на будь-якому пристрої без реєстрації.</p>`,
+        privText: `<h2>Політика конфіденційності</h2><p>Ваша приватність важлива. Ми не збираємо імена чи e-mail.</p><ul><li>Дані не збираються.</li><li>Ми використовуємо куки для реклами Google.</li><li>HTTPS шифрування.</li></ul>`,
+        termsText: `<h2>Умови використання</h2><p>Користуючись сайтом, ви погоджуєтесь:</p><ul><li>Результати є довідковими.</li><li>Ми не несемо відповідальності за фінансові втрати.</li><li>Заборонено копіювання коду.</li></ul>`
     },
     es: {
         title: "Calculadora de Porcentaje",
-        t1_1: "Cuánto es el", t1_2: "% de",
-        t2_1: "es qué % de",
-        t3_1: "De", t3_2: "a", t3_3: "es un cambio de:",
-        footer: "© 2025 PercentageCalculator.io - Rápido y Exacto",
-        priv: "Privacidad", terms: "Términos de Uso",
-        seo: `<h2>¿Por qué usar una calculadora de porcentajes?</h2><p>Nuestra <strong>calculadora de porcentajes</strong> ayuda a resolver problemas matemáticos en segundos. Ideal para calcular <strong>impuestos, descuentos o intereses bancarios</strong>.</p><h2>¿Cómo calcular porcentajes?</h2><p>Es muy sencillo. Por ejemplo, si quieres saber el 20% de 100, el resultado es 20. Nuestra herramienta permite calcular aumentos y disminuciones porcentuales automáticamente.</p>`,
-        privText: `<h2>Privacidad</h2><p>No recopilamos datos personales. Usamos cookies para mejorar la publicidad y recordar su idioma.</p>`,
-        termsText: `<h2>Términos</h2><p>Los resultados son informativos. No nos hacemos responsables de errores de cálculo.</p>`
+        h1: "Calcular el porcentaje de un número", h2: "Determinar la proporción porcentual", h3: "Aumento o disminución porcentual",
+        t1_1: "Cuánto es el", t1_2: "% de", t2_1: "es qué % de", t3_1: "De", t3_2: "a", t3_3: "es:",
+        footer: "© 2025 PercentageCalculator.io - Rápido y Exacto", priv: "Privacidad", terms: "Términos",
+        seo: `<h2>¿Por qué usar una calculadora de porcentajes?</h2><p>Nuestra <strong>calculadora de porcentajes</strong> ayuda a resolver problemas matemáticos en segundos. Ideal para calcular <strong>impuestos, descuentos o intereses</strong>.</p><h2>¿Cómo calcular porcentajes?</h2><p>Es muy sencillo. Por ejemplo, si quieres saber el 20% de 100, el resultado es 20. Nuestra herramienta permite calcular aumentos y disminuciones automáticamente.</p><h2>Herramienta para Negocios</h2><p>Empresarios y estudiantes utilizan nuestra herramienta para calcular márgenes de beneficio y tasas de interés de forma rápida.</p><h2>Gratis y Seguro</h2><p>Ofrecemos una herramienta 100% gratuita que no requiere registro y es compatible con todos los dispositivos.</p>`,
+        privText: `<h2>Privacidad</h2><p>No recopilamos datos personales. Usamos cookies para mejorar la publicidad y recordar su idioma.</p><ul><li>Sin registros.</li><li>Publicidad segura de Google.</li><li>Conexión HTTPS.</li></ul>`,
+        termsText: `<h2>Términos</h2><p>Los resultados son informativos. No nos hacemos responsables de errores de cálculo o decisiones financieras.</p>`
     },
     de: {
         title: "Prozentrechner",
-        t1_1: "Was sind", t1_2: "% von",
-        t2_1: "ist wie viel % von",
-        t3_1: "Von", t3_2: "auf", t3_3: "ist:",
-        footer: "© 2025 PercentageCalculator.io - Schnell & Sicher",
-        priv: "Datenschutz", terms: "Nutzungsbedingungen",
-        seo: `<h2>Online-Prozentrechner für den Alltag</h2><p>Mit unserem <strong>Prozentrechner</strong> lösen Sie jede Aufgabe in Sekunden. Ob <strong>Rabatte, Mehrwertsteuer oder Zinsen</strong> – wir liefern präzise Ergebnisse.</p><h2>Prozente richtig berechnen</h2><p>Berechnen Sie prozentuale Steigerungen oder Abschläge ganz einfach online. Perfekt für Schule, Beruf und Privatleben.</p>`,
-        privText: `<h2>Datenschutz</h2><p>Wir sammeln keine persönlichen Daten. Cookies werden nur für AdSense verwendet.</p>`,
-        termsText: `<h2>Bedingungen</h2><p>Alle Berechnungen ohne Gewähr. Wir haften nicht für finanzielle Entscheidungen.</p>`
+        h1: "Prozentsatz einer Zahl finden", h2: "Prozentuales Verhältnis bestimmen", h3: "Prozentuale Steigerung oder Senkung",
+        t1_1: "Was sind", t1_2: "% von", t2_1: "ist wie viel % von", t3_1: "Von", t3_2: "auf", t3_3: "ist:",
+        footer: "© 2025 PercentageCalculator.io - Schnell & Sicher", priv: "Datenschutz", terms: "Bedingungen",
+        seo: `<h2>Online-Prozentrechner für den Alltag</h2><p>Mit unserem <strong>Prozentrechner</strong> lösen Sie jede Aufgabe in Sekunden. Ob <strong>Rabatte, Mehrwertsteuer oder Zinsen</strong> – wir liefern präzise Ergebnisse.</p><h2>Prozente richtig berechnen</h2><p>Berechnen Sie prozentuale Steigerungen oder Abschläge ganz einfach online. Perfekt für Schule, Beruf und Privatleben.</p><h2>Für Geschäft und Bildung</h2><p>Studenten und Profis nutzen unser Tool, um Gewinnmargen oder Zinssätze blitzschnell zu berechnen.</p><h2>Kostenlos und Schnell</h2><p>Wir bieten ein 100% kostenloses Tool ohne Registrierung an, das auf allen Endgeräten funktioniert.</p>`,
+        privText: `<h2>Datenschutz</h2><p>Wir sammeln keine persönlichen Daten. Cookies werden nur für Spracheinstellungen und AdSense verwendet.</p><ul><li>Keine Datenspeicherung.</li><li>Google AdSense Werbung.</li><li>HTTPS-Verschlüsselung.</li></ul>`,
+        termsText: `<h2>Bedingungen</h2><p>Alle Berechnungen ohne Gewähr. Wir haften nicht für finanzielle Entscheidungen basierend auf diesen Ergebnissen.</p>`
     }
 };
 
@@ -148,6 +144,9 @@ function setLang(lang) {
     localStorage.setItem('lang_calc', lang);
     const l = data[lang];
     document.getElementById('main-title').innerText = l.title;
+    document.getElementById('h3-t1').innerText = l.h1;
+    document.getElementById('h3-t2').innerText = l.h2;
+    document.getElementById('h3-t3').innerText = l.h3;
     document.getElementById('t1-1').innerText = l.t1_1;
     document.getElementById('t1-2').innerText = l.t1_2;
     document.getElementById('t2-1').innerText = l.t2_1;
@@ -187,14 +186,12 @@ function calc3() {
 }
 
 function openModal(type) {
-    const body = document.getElementById('modal-body');
-    body.innerHTML = type === 'privacy' ? data[cur].privText : data[cur].termsText;
+    const l = data[cur];
+    document.getElementById('modal-body').innerHTML = type === 'privacy' ? l.privText : l.termsText;
     document.getElementById('modal').style.display = 'block';
 }
 
 function closeModal() { document.getElementById('modal').style.display = 'none'; }
-
-window.onclick = function(event) { if (event.target == document.getElementById('modal')) closeModal(); }
 
 setLang(cur);
 </script>
