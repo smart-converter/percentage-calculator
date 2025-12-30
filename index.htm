@@ -5,94 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>PRO Percentage Calculator</title>
     <style>
-        :root { 
-            --bg: #0f172a; --card-bg: #1e293b; --text: #f8fafc; 
-            --accent: #38bdf8; --success: #22c55e; --danger: #ef4444; 
-        }
-        body { 
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
-            margin: 0; padding: 0; background-color: var(--bg); color: var(--text); 
-            line-height: 1.6; -webkit-font-smoothing: antialiased; 
-        }
-
-        /* ШАПКА */
+        :root { --bg: #0f172a; --card-bg: #1e293b; --text: #f8fafc; --accent: #38bdf8; --success: #22c55e; --danger: #ef4444; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; margin: 0; padding: 0; background-color: var(--bg); color: var(--text); line-height: 1.6; }
         .header { background: #1e293b; padding: 25px 20px; border-bottom: 1px solid #334155; text-align: center; }
-        .header h1 { margin: 0 0 15px 0; font-size: 26px; font-weight: 900; color: var(--accent); text-transform: uppercase; letter-spacing: -1px; }
-
-        /* ПЕРЕМИКАЧ МОВ */
+        .header h1 { margin: 0 0 15px 0; font-size: 26px; font-weight: 900; color: var(--accent); text-transform: uppercase; }
         .lang-switcher { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; }
-        .lang-btn { background: #334155; color: white; border: 2px solid var(--accent); padding: 8px 16px; border-radius: 12px; font-size: 13px; font-weight: 900; cursor: pointer; transition: 0.3s; }
+        .lang-btn { background: #334155; color: white; border: 2px solid var(--accent); padding: 8px 16px; border-radius: 12px; font-size: 13px; font-weight: 900; cursor: pointer; }
         .lang-btn.active { background: var(--accent); color: var(--bg); }
-
         .container { max-width: 700px; margin: 0 auto; padding: 20px 15px; }
-
-        /* КАРТКИ КАЛЬКУЛЯТОРІВ */
         .calc-card { background: var(--card-bg); border-radius: 24px; padding: 25px; margin-bottom: 25px; border: 1px solid #334155; box-shadow: 0 10px 30px rgba(0,0,0,0.4); }
-        .calc-card h3 { margin: 0 0 20px 0; font-size: 22px; color: var(--accent); font-weight: 900; line-height: 1.2; border-left: 5px solid var(--accent); padding-left: 15px; }
-
-        .calc-box { display: flex; flex-direction: column; gap: 12px; }
-        .input-row { display: flex; align-items: center; justify-content: space-between; gap: 10px; font-weight: 800; font-size: 17px; }
-        
-        .input-box { flex: 1; padding: 16px; border: 2px solid #475569; border-radius: 14px; font-size: 19px; font-weight: 800; background: #0f172a; color: white; outline: none; width: 100%; box-sizing: border-box; }
-        .input-box:focus { border-color: var(--accent); box-shadow: 0 0 15px rgba(56, 189, 248, 0.1); }
-        
-        .res-box { width: 100%; padding: 16px; border: 2px solid var(--success); border-radius: 14px; font-size: 22px; font-weight: 900; background: rgba(34, 197, 94, 0.1); color: var(--success); text-align: center; box-sizing: border-box; margin-top: 5px; }
-
-        /* SEO ТЕКСТ */
-        .seo-text { padding: 40px 15px; font-size: 16px; color: #cbd5e1; line-height: 1.8; border-top: 1px solid #334155; }
-        .seo-text h2 { color: var(--accent); font-size: 28px; font-weight: 900; margin-bottom: 20px; text-align: center; }
-
-        /* ФУТЕР - ЗАЛІЗНЕ ЦЕНТРУВАННЯ */
-        footer { 
-            padding: 60px 20px; 
-            border-top: 1px solid #334155; 
-            background: #0f172a; 
-            display: flex; 
-            flex-direction: column; 
-            align-items: center; 
-            justify-content: center;
-            text-align: center; 
-            width: 100%;
-            box-sizing: border-box;
-        }
-        .footer-content { width: 100%; max-width: 600px; display: flex; flex-direction: column; align-items: center; }
-        #footer-copy { font-weight: 900; color: var(--accent); font-size: 22px; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px; }
-        #footer-mission { font-size: 15px; color: #94a3b8; line-height: 1.7; font-weight: 500; margin: 0 auto 25px auto; max-width: 550px; }
-        
-        .footer-links { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; margin-bottom: 30px; width: 100%; }
-        .footer-link { color: var(--text); font-weight: 800; font-size: 16px; cursor: pointer; text-decoration: none; border-bottom: 1px solid transparent; transition: 0.3s; }
-        .footer-link:hover { color: var(--accent); border-bottom-color: var(--accent); }
-
-        .contact-info { font-size: 14px; color: #64748b; font-weight: 700; margin-top: 10px; line-height: 1.5; }
-        .copyright-tag { margin-top: 30px; color: #475569; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
-
-        /* МОДАЛЬНЕ ВІКНО */
+        .calc-card h3 { margin: 0 0 20px 0; font-size: 22px; color: var(--accent); font-weight: 900; border-left: 5px solid var(--accent); padding-left: 15px; }
+        .input-box { width: 100%; padding: 16px; border: 2px solid #475569; border-radius: 14px; font-size: 19px; font-weight: 800; background: #0f172a; color: white; box-sizing: border-box; }
+        .res-box { width: 100%; padding: 16px; border: 2px solid var(--success); border-radius: 14px; font-size: 22px; font-weight: 900; background: rgba(34, 197, 94, 0.1); color: var(--success); text-align: center; box-sizing: border-box; margin-top: 10px; }
+        footer { padding: 60px 20px; border-top: 1px solid #334155; background: #0f172a; text-align: center; }
+        #footer-mission { font-size: 15px; color: #94a3b8; max-width: 550px; margin: 0 auto 25px auto; font-weight: 500; }
+        .footer-link { color: var(--text); font-weight: 800; margin: 0 15px; cursor: pointer; text-decoration: none; }
         .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.92); backdrop-filter: blur(10px); }
-        .modal-content { 
-            background: var(--card-bg); 
-            margin: 15% auto; 
-            padding: 40px 30px; 
-            width: 88%; 
-            max-width: 500px; 
-            border-radius: 25px; 
-            border: 2px solid var(--accent); 
-            position: relative; 
-            color: #e2e8f0; 
-            display: flex;
-            flex-direction: column;
-            align-items: center; 
-            text-align: center;
-            box-sizing: border-box;
-        }
-        .modal-content h2 { color: var(--accent); margin-top: 0; font-weight: 900; width: 100%; margin-bottom: 20px; }
-        .modal-content p { line-height: 1.7; margin-bottom: 15px; width: 100%; font-size: 16px; }
-        .close { position: absolute; right: 20px; top: 10px; font-size: 45px; color: #64748b; cursor: pointer; line-height: 1; }
-
-        @media (max-width: 600px) {
-            .header h1 { font-size: 22px; }
-            .lang-btn { padding: 8px 12px; font-size: 11px; }
-            .modal-content { margin: 25% auto; padding: 35px 20px; }
-        }
+        .modal-content { background: var(--card-bg); margin: 15% auto; padding: 40px 30px; width: 88%; max-width: 500px; border-radius: 25px; border: 2px solid var(--accent); position: relative; text-align: center; }
+        .close { position: absolute; right: 20px; top: 10px; font-size: 40px; color: #64748b; cursor: pointer; }
     </style>
 </head>
 <body>
@@ -109,51 +39,30 @@
 
 <div class="container">
     <div class="calc-card">
-        <h3 id="h3-t1">Find Percentage Value</h3>
-        <div class="calc-box">
-            <div class="input-row"><span id="t1-1">What is</span> <input type="number" id="t1-p" class="input-box" oninput="calc1()" placeholder="%"> <span id="t1-2">% of</span></div>
-            <input type="number" id="t1-v" class="input-box" oninput="calc1()" placeholder="Number">
-            <input type="text" id="t1-res" class="res-box" readonly placeholder="Result">
-        </div>
+        <h3 id="h3-t1">Розрахунок % від числа</h3>
+        <input type="number" id="t1-p" class="input-box" oninput="calc1()" placeholder="%">
+        <div style="margin: 10px 0; font-weight: 800;" id="t1-text">від числа</div>
+        <input type="number" id="t1-v" class="input-box" oninput="calc1()" placeholder="...">
+        <input type="text" id="t1-res" class="res-box" readonly>
     </div>
 
     <div class="calc-card">
-        <h3 id="h3-t2">Ratio Analysis</h3>
-        <div class="calc-box">
-            <input type="number" id="t2-v1" class="input-box" oninput="calc2()" placeholder="Value 1">
-            <div class="input-row"><span id="t2-1">is what % of</span> <input type="number" id="t2-v2" class="input-box" oninput="calc2()" placeholder="Value 2"></div>
-            <input type="text" id="t2-res" class="res-box" readonly placeholder="Result %">
-        </div>
+        <h3 id="h3-t2">Відсоткове співвідношення</h3>
+        <input type="number" id="t2-v1" class="input-box" oninput="calc2()" placeholder="...">
+        <div style="margin: 10px 0; font-weight: 800;" id="t2-text">це який % від</div>
+        <input type="number" id="t2-v2" class="input-box" oninput="calc2()" placeholder="...">
+        <input type="text" id="t2-res" class="res-box" readonly>
     </div>
-
-    <div class="calc-card">
-        <h3 id="h3-t3">Percentage Change</h3>
-        <div class="calc-box">
-            <div class="input-row"><span id="t3-1">From</span> <input type="number" id="t3-v1" class="input-box" oninput="calc3()"> <span id="t3-2">to</span></div>
-            <input type="number" id="t3-v2" class="input-box" oninput="calc3()">
-            <input type="text" id="t3-res" class="res-box" readonly placeholder="Difference %">
-        </div>
-    </div>
-
-    <div class="seo-text" id="seo-content"></div>
 </div>
 
 <footer>
-    <div class="footer-content">
-        <div id="footer-copy">PRO % CALCULATOR</div>
-        <p id="footer-mission">Our mission is to provide the fastest and most accurate financial tools for everyone. From students to professional traders, we make complex math simple and accessible for every user worldwide.</p>
+    <div style="font-weight: 900; color: var(--accent); font-size: 22px; margin-bottom: 15px;">PRO % CALCULATOR</div>
+    <p id="footer-mission">Наша місія — надати кожному найшвидші та найточніші фінансові інструменти. Від студентів до професійних трейдерів, ми робимо складну математику простою, доступною та зрозумілою для кожного користувача.</p>
+    <div style="margin-bottom: 25px;">
+        <span class="footer-link" onclick="openModal('privacy')" id="link-priv">Конфіденційність</span>
+        <span class="footer-link" onclick="openModal('terms')" id="link-terms">Умови</span>
     </div>
-
-    <div class="footer-links">
-        <span class="footer-link" onclick="openModal('privacy')" id="link-priv">Privacy Policy</span>
-        <span class="footer-link" onclick="openModal('terms')" id="link-terms">Terms of Use</span>
-    </div>
-
-    <div class="contact-info">
-        <div>Email: support@smart-converter.io</div>
-        <div>Based in European Union</div>
-    </div>
-    <div class="copyright-tag">© 2025 PRO Percentage Team. All Rights Reserved.</div>
+    <div style="font-size: 12px; color: #475569;">© 2025 PRO Percentage Team</div>
 </footer>
 
 <div id="modal" class="modal" onclick="if(event.target == this) closeModal()">
@@ -164,108 +73,74 @@
 </div>
 
 <script>
-// ПРИМУСОВЕ ОЧИЩЕННЯ СТАРИХ ДАНИХ (щоб завантажити нові тексти футера)
-if (!localStorage.getItem('force_update_v14')) {
-    localStorage.clear();
-    localStorage.setItem('force_update_v14', 'true');
-}
+// Повне очищення перед запуском
+localStorage.clear();
 
 const data = {
     en: {
-        title: "PRO % CALCULATOR", h1: "Find Percentage Value", h2: "Number Ratio to %", h3: "Percentage Change Rate",
-        t1_1: "What is", t1_2: "% of", t2_1: "is what % of", t3_1: "From", t3_2: "to",
+        title: "PRO % CALCULATOR", h1: "Find Percentage Value", h2: "Ratio Analysis",
+        t1: "of number", t2: "is what % of",
         mission: "Our mission is to provide the fastest and most accurate financial tools for everyone. From students to professional traders, we make complex math simple and accessible for every user worldwide.",
-        privLabel: "Privacy Policy", termsLabel: "Terms of Use",
-        seo: `<h2>Advanced Percentage Solutions</h2><p>Our professional <strong>Percentage Calculator</strong> is optimized for business and personal finance. Calculate sales tax, investment ROI, and discounts with high-speed algorithms.</p><h2>Accuracy in Every Calculation</h2><p>Used by students and financial analysts worldwide, this tool ensures your calculations are 100% correct every time.</p>`,
-        privText: `<h2>Privacy Policy</h2><p>At PRO % Calculator, your privacy is our priority. We do not collect, store, or share any personal identifiable information. Our tool operates entirely on your device.</p><p>We use industry-standard cookies for advertisement purposes via Google AdSense to keep this tool free for everyone.</p>`,
-        termsText: `<h2>Terms of Service</h2><p>All calculations provided by this website are for informational purposes only. While we strive for 100% accuracy, we are not liable for any financial decisions or losses based on these results.</p><p>By using this tool, you agree to use it for legal purposes only.</p>`
+        priv: "Privacy Policy", terms: "Terms of Use"
     },
     uk: {
-        title: "PRO % КАЛЬКУЛЯТОР", h1: "Розрахунок % від числа", h2: "Відсоткове співвідношення", h3: "Динаміка зміни (різниця)",
-        t1_1: "Скільки", t1_2: "% від", t2_1: "це який % від", t3_1: "З", t3_2: "до",
+        title: "PRO % КАЛЬКУЛЯТОР", h1: "Розрахунок % від числа", h2: "Відсоткове співвідношення",
+        t1: "від числа", t2: "це який % від",
         mission: "Наша місія — надати кожному найшвидші та найточніші фінансові інструменти. Від студентів до професійних трейдерів, ми робимо складну математику простою, доступною та зрозумілою для кожного користувача.",
-        privLabel: "Конфіденційність", termsLabel: "Умови використання",
-        seo: `<h2>Професійний розрахунок відсотків</h2><p>Наш інструмент створений для тих, кому потрібна швидкість і точність. Рахуйте ПДВ, маржу або знижки за лічені секунди без зайвих зусиль.</p><h2>Чому обирають нас?</h2><p>Ми забезпечуємо миттєві результати та підтримуємо три режими розрахунків для навчання, торгівлі та бізнесу.</p>`,
-        privText: `<h2>Політика конфіденційності</h2><p>Ваша конфіденційність — наш пріоритет. Ми не збираємо та не зберігаємо ваші персональні дані. Всі обчислення відбуваються анонімно на вашому пристрої.</p><p>Ми використовуємо файли cookie лише для показу релевантної реклами через Google AdSense, що дозволяє сервісу залишатися безкоштовним.</p>`,
-        termsText: `<h2>Умови використання</h2><p>Всі результати розрахунків мають лише інформаційний характер. Ми не несемо відповідальності за будь-які фінансові збитки, пов'язані з використанням цих даних.</p><p>Використовуючи цей сайт, ви погоджуєтеся з цими умовами та зобов'язуєтесь використовувати сервіс лише в законних цілях.</p>`
+        priv: "Конфіденційність", terms: "Умови"
     },
     es: {
-        title: "PRO % CALCULADORA", h1: "Calcular Porcentaje", h2: "Relación de Números", h3: "Tasa de Cambio %",
-        t1_1: "Qué es el", t1_2: "% de", t2_1: "es qué % de", t3_1: "De", t3_2: "a",
+        title: "PRO % CALCULADORA", h1: "Calcular Porcentaje", h2: "Relación de Números",
+        t1: "del número", t2: "es qué % de",
         mission: "Nuestra misión es proporcionar las herramientas financieras más rápidas y precisas para todos. Hacemos que las matemáticas complejas sean simples, accesibles y comprensibles para todos los usuarios en todo el mundo, desde estudiantes hasta inversores profesionales que buscan rapidez.",
-        privLabel: "Privacidad", termsLabel: "Términos",
-        seo: `<h2>Calculadora de Porcentajes Elite</h2><p>Optimice sus cálculos financieros con nuestra herramienta de alta precisión. Ideal para negocios y estudiantes.</p>`,
-        privText: `<h2>Política de Privacidad</h2><p>No recopilamos información personal. Tu privacidad está garantizada. Nuestra herramienta funciona localmente en su navegador y no comparte datos confidenciales con servidores externos para su total seguridad.</p>`,
-        termsText: `<h2>Términos de Uso</h2><p>Los resultados son informativos. No nos hacemos responsables de las decisiones financieras basadas en esta herramienta. El uso de este sitio implica la aceptación de estas condiciones y responsabilidades legales.</p>`
+        priv: "Privacidad", terms: "Términos"
     },
     de: {
-        title: "PRO % RECHNER", h1: "Prozentwert finden", h2: "Verhältnis in %", h3: "Preisänderung %",
-        t1_1: "Was sind", t1_2: "% von", t2_1: "ist wie viel % von", t3_1: "Von", t3_2: "auf",
+        title: "PRO % RECHNER", h1: "Prozentwert finden", h2: "Verhältnis in %",
+        t1: "von der Zahl", t2: "ist wie viel % von",
         mission: "Unsere Mission ist es, jedem die schnellsten und genauesten Finanzinstrumente zur Verfügung zu stellen. Wir machen komplexe Mathematik für jeden Benutzer weltweit einfach, zugänglich und verständlich, egal ob für Schule, Studium oder berufliche Zwecke im Finanzwesen.",
-        privLabel: "Datenschutz", termsLabel: "Bedingungen",
-        seo: `<h2>Premium Prozentrechner Online</h2><p>Präzise Ergebnisse für Business und Alltag. Berechnen Sie Steuern und Rabatte sofort.</p>`,
-        privText: `<h2>Datenschutz</h2><p>Wir sammeln keine personenbezogenen Daten. Ihre Sicherheit ist uns wichtig. Alle Berechnungen erfolgen anonym und sicher direkt in Ihrem Webbrowser, ohne dass Daten an Dritte weitergegeben werden.</p>`,
-        termsText: `<h2>Nutzungsbedingungen</h2><p>Alle Berechnungen ohne Gewähr. Die Ergebnisse dienen lediglich der Information und stellen keine Finanzberatung dar. Mit der Nutzung dieser Website stimmen Sie diesen Bedingungen und Haftungsausschlüssen zu.</p>`
+        priv: "Datenschutz", terms: "Bedingungen"
     }
 };
 
-let cur = localStorage.getItem('lang_current') || 'uk';
-
 function setLang(lang) {
-    cur = lang;
-    localStorage.setItem('lang_current', lang);
-    const l = data[lang] || data['en'];
-    
+    const l = data[lang];
     document.getElementById('main-title').innerText = l.title;
     document.getElementById('h3-t1').innerText = l.h1;
     document.getElementById('h3-t2').innerText = l.h2;
-    document.getElementById('h3-t3').innerText = l.h3;
-    document.getElementById('t1-1').innerText = l.t1_1;
-    document.getElementById('t1-2').innerText = l.t1_2;
-    document.getElementById('t2-1').innerText = l.t2_1;
-    document.getElementById('t3-1').innerText = l.t3_1;
-    document.getElementById('t3-2').innerText = l.t3_2;
-    document.getElementById('seo-content').innerHTML = l.seo;
+    document.getElementById('t1-text').innerText = l.t1;
+    document.getElementById('t2-text').innerText = l.t2;
     document.getElementById('footer-mission').innerText = l.mission;
-    document.getElementById('link-priv').innerText = l.privLabel;
-    document.getElementById('link-terms').innerText = l.termsLabel;
-    document.getElementById('footer-copy').innerText = l.title;
-
-    document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+    document.getElementById('link-priv').innerText = l.priv;
+    document.getElementById('link-terms').innerText = l.terms;
+    
+    document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
     document.getElementById('btn-' + lang).classList.add('active');
 }
 
 function calc1() {
     const p = parseFloat(document.getElementById('t1-p').value), v = parseFloat(document.getElementById('t1-v').value);
-    const res = document.getElementById('t1-res');
-    res.value = (!isNaN(p) && !isNaN(v)) ? ((p / 100) * v).toFixed(2) : "";
+    document.getElementById('t1-res').value = (p && v) ? ((p / 100) * v).toFixed(2) : "";
 }
 
 function calc2() {
     const v1 = parseFloat(document.getElementById('t2-v1').value), v2 = parseFloat(document.getElementById('t2-v2').value);
-    const res = document.getElementById('t2-res');
-    res.value = (!isNaN(v1) && !isNaN(v2) && v2 !== 0) ? ((v1 / v2) * 100).toFixed(2) + "%" : "";
-}
-
-function calc3() {
-    const v1 = parseFloat(document.getElementById('t3-v1').value), v2 = parseFloat(document.getElementById('t3-v2').value);
-    const res = document.getElementById('t3-res');
-    if(!isNaN(v1) && !isNaN(v2) && v1 !== 0) {
-        const diff = ((v2 - v1) / v1) * 100;
-        res.value = (diff > 0 ? "+" : "") + diff.toFixed(2) + "%";
-        res.style.color = diff >= 0 ? "#22c55e" : "#ef4444";
-    } else res.value = "";
+    document.getElementById('t2-res').value = (v1 && v2) ? ((v1 / v2) * 100).toFixed(2) + "%" : "";
 }
 
 function openModal(type) {
-    const l = data[cur] || data['en'];
-    document.getElementById('modal-body').innerHTML = type === 'privacy' ? l.privText : l.termsText;
+    const bodies = {
+        privacy: "<h3>Privacy</h3><p>We do not collect personal data. Everything stays on your device.</p>",
+        terms: "<h3>Terms</h3><p>Calculations are for informational purposes only.</p>"
+    };
+    document.getElementById('modal-body').innerHTML = bodies[type];
     document.getElementById('modal').style.display = 'block';
 }
 
 function closeModal() { document.getElementById('modal').style.display = 'none'; }
-setLang(cur);
+
+// Запуск української за замовчуванням
+setLang('uk');
 </script>
 </body>
 </html>
-
