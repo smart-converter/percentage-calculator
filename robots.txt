@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://smart-converter.github.io/percentage-calculator/sitemap.xml
