@@ -1,218 +1,176 @@
 <!DOCTYPE html>
-<html lang="uk">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="google-site-verification" content="8boxzAKQUKKF8IEuVEX1wX8aUwcdch3Q11BgfGM3vkM" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    
-    <title>PRO % CALCULATOR</title>
-    <meta name="description" id="meta-desc" content="Професійний калькулятор відсотків онлайн. Швидко розраховуйте відсотки, частку та динаміку змін.">
-    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Percentage Calculator Pro - Elite Tool</title>
     <style>
-        :root { 
-            --bg: #0f172a; --card-bg: #1e293b; --text: #f8fafc; 
-            --accent: #38bdf8; --success: #22c55e; --danger: #ef4444; 
-        }
-        body { 
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
-            margin: 0; padding: 0; background-color: var(--bg); color: var(--text); 
-            line-height: 1.6; -webkit-font-smoothing: antialiased; 
-        }
-
-        .header { background: #1e293b; padding: 25px 20px; border-bottom: 1px solid #334155; text-align: center; }
-        .header h1 { margin: 0 0 15px 0; font-size: 26px; font-weight: 900; color: var(--accent); text-transform: uppercase; letter-spacing: -1px; }
-
-        .lang-switcher { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; }
-        .lang-btn { background: #334155; color: white; border: 2px solid var(--accent); padding: 8px 16px; border-radius: 12px; font-size: 13px; font-weight: 900; cursor: pointer; transition: 0.3s; }
-        .lang-btn.active { background: var(--accent); color: var(--bg); }
-
-        .container { max-width: 700px; margin: 0 auto; padding: 20px 15px; }
-
-        .calc-card { background: var(--card-bg); border-radius: 24px; padding: 25px; margin-bottom: 25px; border: 1px solid #334155; box-shadow: 0 10px 30px rgba(0,0,0,0.4); }
-        .calc-card h3 { margin: 0 0 20px 0; font-size: 22px; color: var(--accent); font-weight: 900; border-left: 5px solid var(--accent); padding-left: 15px; }
-
-        .calc-box { display: flex; flex-direction: column; gap: 12px; }
-        .input-row { display: flex; align-items: center; justify-content: space-between; gap: 10px; font-weight: 800; font-size: 17px; }
+        body { font-family: -apple-system, system-ui, sans-serif; margin: 0; padding: 0; background-color: #0f172a; color: #f8fafc; -webkit-font-smoothing: antialiased; }
+        .top-header { background-color: #166534; padding: 20px 15px; text-align: center; border-bottom: 1px solid #1e293b; }
+        .top-header h1 { margin: 0; font-size: 22px; font-weight: 700; color: #ffffff; text-transform: uppercase; }
         
-        .input-box { flex: 1; padding: 16px; border: 2px solid #475569; border-radius: 14px; font-size: 19px; font-weight: 800; background: #0f172a; color: white; outline: none; width: 100%; box-sizing: border-box; }
-        .input-box:focus { border-color: var(--accent); }
+        .lang-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding: 15px; max-width: 500px; margin: 0 auto; }
+        .lang-btn { padding: 10px; text-align: center; background: #1e293b; border: 1px solid #334155; border-radius: 8px; cursor: pointer; font-size: 13px; color: #94a3b8; }
+        .lang-btn.active { background: #22c55e; color: #ffffff; border-color: #22c55e; font-weight: bold; }
+
+        .container { max-width: 500px; margin: 0 auto; padding: 20px; box-sizing: border-box; }
+        .calc-section { background: #1e293b; padding: 25px; border-radius: 20px; border: 1px solid #334155; box-shadow: 0 10px 25px rgba(0,0,0,0.4); margin-bottom: 25px; }
         
-        .res-box { width: 100%; padding: 16px; border: 2px solid var(--success); border-radius: 14px; font-size: 22px; font-weight: 900; background: rgba(34, 197, 194, 0.1); color: var(--success); text-align: center; box-sizing: border-box; margin-top: 5px; }
+        label { display: block; margin-bottom: 8px; font-size: 12px; font-weight: 700; color: #64748b; text-transform: uppercase; }
+        .input-box { width: 100%; padding: 12px; background: #0f172a; border: 1px solid #334155; border-radius: 10px; color: #fff; font-size: 18px; font-weight: 700; box-sizing: border-box; margin-bottom: 15px; outline: none; }
+        .input-box:focus { border-color: #22c55e; }
 
-        .seo-text { padding: 40px 15px; font-size: 16px; color: #cbd5e1; border-top: 1px solid #334155; text-align: justify; }
-        .seo-text h2 { color: var(--accent); font-size: 28px; font-weight: 900; margin-bottom: 20px; text-align: center; }
+        .res-container { background: rgba(34, 197, 94, 0.05); border: 1px dashed #22c55e; border-radius: 12px; padding: 15px; text-align: center; margin-top: 5px; }
+        .res-val { font-size: 24px; font-weight: 800; color: #22c55e; }
 
-        /* МЕРЕЖА ІНСТРУМЕНТІВ */
-        .network-box { margin: 30px 0; padding: 20px; background: rgba(56, 189, 248, 0.05); border-radius: 20px; border: 1px solid #334155; }
-        .network-title { font-size: 14px; font-weight: 900; color: #94a3b8; text-transform: uppercase; margin-bottom: 15px; letter-spacing: 1px; }
-        .network-links { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
-        .tool-btn { text-decoration: none; background: #0f172a; color: var(--accent); border: 1px solid var(--accent); padding: 10px 20px; border-radius: 50px; font-size: 14px; font-weight: 800; transition: 0.3s; }
-        .tool-btn:hover { background: var(--accent); color: #0f172a; }
+        .seo-content { max-width: 500px; margin: 20px auto; padding: 0 20px; line-height: 1.6; color: #64748b; font-size: 14px; }
+        .seo-content h2 { color: #22c55e; font-size: 18px; margin-bottom: 10px; }
 
-        footer { padding: 60px 20px; border-top: 1px solid #334155; background: #0f172a; text-align: center; }
-        .footer-wrap { max-width: 600px; margin: 0 auto; }
-        #footer-copy { font-weight: 900; color: var(--accent); font-size: 22px; margin-bottom: 15px; text-transform: uppercase; }
-        #footer-mission { font-size: 15px; color: #94a3b8; line-height: 1.8; margin-bottom: 30px; }
-        
-        .footer-links { display: flex; justify-content: center; gap: 30px; margin-bottom: 30px; }
-        .footer-link { color: var(--text); font-weight: 800; font-size: 16px; cursor: pointer; border-bottom: 1px solid transparent; transition: 0.3s; }
+        .network-tools { max-width: 500px; margin: 20px auto; text-align: center; padding: 15px; border-top: 1px solid #1e293b; }
+        .tool-link { display: inline-block; color: #22c55e; text-decoration: none; font-size: 13px; margin: 5px 10px; border: 1px solid #22c55e; padding: 5px 12px; border-radius: 20px; }
 
-        .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); backdrop-filter: blur(10px); }
-        .modal-content { background: var(--card-bg); margin: 10% auto; padding: 40px 30px; width: 85%; max-width: 500px; border-radius: 25px; border: 2px solid var(--accent); position: relative; }
-        .close { position: absolute; right: 20px; top: 10px; font-size: 35px; color: var(--accent); cursor: pointer; font-weight: bold; }
+        footer { padding: 20px; text-align: center; background: #0f172a; border-top: 1px solid #1e293b; }
+        .footer-link { color: #22c55e; text-decoration: none; cursor: pointer; font-weight: bold; font-size: 13px; margin: 0 10px; }
+
+        .modal { display: none; position: fixed; z-index: 99; left: 0; top: 0; width: 100%; height: 100%; background: rgba(15,23,42,0.9); }
+        .modal-content { background: #1e293b; margin: 15% auto; padding: 30px; width: 85%; max-width: 400px; border-radius: 20px; border: 1px solid #334155; position: relative; }
+        .close { position: absolute; right: 15px; top: 10px; font-size: 35px; font-weight: 900; color: #22c55e; cursor: pointer; }
     </style>
 </head>
 <body>
 
-<div class="header">
-    <h1 id="main-title">PRO % CALCULATOR</h1>
-    <div class="lang-switcher">
-        <button class="lang-btn" onclick="setLang('en')" id="btn-en">ENGLISH</button>
-        <button class="lang-btn" onclick="setLang('uk')" id="btn-uk">УКРАЇНСЬКА</button>
-        <button class="lang-btn" onclick="setLang('es')" id="btn-es">ESPAÑOL</button>
-        <button class="lang-btn" onclick="setLang('de')" id="btn-de">DEUTSCH</button>
-    </div>
+<div class="top-header"><h1>% CALCULATOR ELITE</h1></div>
+
+<div class="lang-grid">
+    <div class="lang-btn" onclick="changeLang('en')" id="btn-en">ENGLISH</div>
+    <div class="lang-btn" onclick="changeLang('uk')" id="btn-uk">УКРАЇНСЬКА</div>
+    <div class="lang-btn" onclick="changeLang('es')" id="btn-es">ESPAÑOL</div>
+    <div class="lang-btn" onclick="changeLang('de')" id="btn-de">DEUTSCH</div>
 </div>
 
 <div class="container">
-    <div class="calc-card">
-        <h3 id="h3-t1">Find Percentage Value</h3>
-        <div class="calc-box">
-            <div class="input-row"><span id="t1-1">What is</span> <input type="number" id="t1-p" class="input-box" oninput="calc1()" placeholder="%"> <span id="t1-2">% of</span></div>
-            <input type="number" id="t1-v" class="input-box" oninput="calc1()" placeholder="Number">
-            <input type="text" id="t1-res" class="res-box" readonly placeholder="Result">
-        </div>
+    <div class="calc-section">
+        <h3 style="margin:0 0 15px 0; font-size:16px; color:#22c55e;" id="title-1">What is X% of Y?</h3>
+        <label id="lbl-perc">Percentage (%)</label>
+        <input type="number" id="p1" class="input-box" value="10" oninput="calc1()">
+        <label id="lbl-num">Number</label>
+        <input type="number" id="v1" class="input-box" value="100" oninput="calc1()">
+        <div class="res-container"><span class="res-val" id="r1">10.00</span></div>
     </div>
 
-    <div class="calc-card">
-        <h3 id="h3-t2">Ratio Analysis</h3>
-        <div class="calc-box">
-            <input type="number" id="t2-v1" class="input-box" oninput="calc2()" placeholder="Value 1">
-            <div class="input-row"><span id="t2-1">is what % of</span> <input type="number" id="t2-v2" class="input-box" oninput="calc2()" placeholder="Value 2"></div>
-            <input type="text" id="t2-res" class="res-box" readonly placeholder="Result %">
-        </div>
+    <div class="calc-section">
+        <h3 style="margin:0 0 15px 0; font-size:16px; color:#22c55e;" id="title-2">Percentage Difference</h3>
+        <label id="lbl-from">From value</label>
+        <input type="number" id="v2a" class="input-box" value="100" oninput="calc2()">
+        <label id="lbl-to">To value</label>
+        <input type="number" id="v2b" class="input-box" value="120" oninput="calc2()">
+        <div class="res-container"><span class="res-val" id="r2">20.00%</span></div>
     </div>
+</div>
 
-    <div class="calc-card">
-        <h3 id="h3-t3">Percentage Change</h3>
-        <div class="calc-box">
-            <div class="input-row"><span id="t3-1">From</span> <input type="number" id="t3-v1" class="input-box" oninput="calc3()"> <span id="t3-2">to</span></div>
-            <input type="number" id="t3-v2" class="input-box" oninput="calc3()">
-            <input type="text" id="t3-res" class="res-box" readonly placeholder="Difference %">
-        </div>
-    </div>
+<div class="seo-content" id="seo-box"></div>
 
-    <div class="network-box">
-        <div class="network-title" id="txt-network">Our Elite Tools:</div>
-        <div class="network-links">
-            <a href="https://smart-converter.github.io/vat-calculator/" class="tool-btn">VAT Calculator</a>
-            <a href="https://smart-converter.github.io/unit-converter/" class="tool-btn">Unit Converter</a>
-        </div>
-    </div>
-
-    <div class="seo-text" id="seo-content"></div>
+<div class="network-tools">
+    <p style="font-size: 12px; color: #475569; margin-bottom: 10px;" id="txt-tools">Other tools:</p>
+    <a href="https://smart-converter.github.io/vat-calculator/" class="tool-link">VAT Calculator</a>
+    <a href="https://smart-converter.github.io/unit-converter/" class="tool-link">Unit Converter</a>
 </div>
 
 <footer>
-    <div class="footer-wrap">
-        <div id="footer-copy">PRO % CALCULATOR</div>
-        <p id="footer-mission"></p>
-        <div class="footer-links">
-            <span class="footer-link" onclick="openModal('privacy')" id="link-priv"></span>
-            <span class="footer-link" onclick="openModal('terms')" id="link-terms"></span>
-        </div>
-        <div style="font-size: 12px; color: #475569; font-weight: 700;">© 2026 PRO Percentage Team.</div>
-    </div>
+    <span class="footer-link" onclick="openPol('privacy')" id="link-privacy">Privacy</span>
+    <span class="footer-link" onclick="openPol('terms')" id="link-terms">Terms</span>
+    <p id="txt-footer" style="color: #475569; font-size: 11px; margin-top: 15px;"></p>
 </footer>
 
-<div id="modal" class="modal" onclick="if(event.target == this) closeModal()">
+<div id="siteModal" class="modal">
     <div class="modal-content">
         <span class="close" onclick="closeModal()">&times;</span>
-        <div id="modal-body"></div>
+        <div id="modalBody"></div>
     </div>
 </div>
 
 <script>
-const data = {
-    en: {
-        pageTitle: "PRO % CALCULATOR | Financial Precision",
-        meta: "Free online percentage calculator. Fast, accurate tool for finance.",
-        title: "PRO % CALCULATOR", h1: "Find Percentage Value", h2: "Ratio Analysis", h3: "Percentage Change",
-        t1_1: "What is", t1_2: "% of", t2_1: "is what % of", t3_1: "From", t3_2: "to",
-        network: "Our Elite Tools:", mission: "Our global mission is to provide the fastest financial tools.",
-        privLabel: "Privacy Policy", termsLabel: "Terms",
-        seo: `<h2>Advanced Percentage Solutions</h2><p>Our professional Percentage Calculator is optimized for business.</p>`,
-        privText: `<h2>Privacy Policy</h2><p>We do not collect personal data.</p>`,
-        termsText: `<h2>Terms</h2><p>For informational purposes only.</p>`
-    },
-    uk: {
-        pageTitle: "PRO % КАЛЬКУЛЯТОР | Точність розрахунків",
-        meta: "Безкоштовний калькулятор відсотків онлайн.",
-        title: "PRO % КАЛЬКУЛЯТОР", h1: "Розрахунок % від числа", h2: "Відсоткове співвідношення", h3: "Динаміка зміни",
-        t1_1: "Скільки", t1_2: "% від", t2_1: "це який % від", t3_1: "З", t3_2: "до",
-        network: "Наші інструменти:", mission: "Наша місія — надати кожному найшвидші та найточніші фінансові інструменти.",
-        privLabel: "Конфіденційність", termsLabel: "Умови",
-        seo: `<h2>Професійний розрахунок відсотків</h2><p>Наш інструмент створений для тих, кому потрібна максимальна швидкість.</p>`,
-        privText: `<h2>Конфіденційність</h2><p>Ми не збираємо ваші персональні дані.</p>`,
-        termsText: `<h2>Умови</h2><p>Результати мають інформаційний характер.</p>`
+    const translations = {
+        en: {
+            t1: "What is X% of Y?", t2: "Percentage Difference", perc: "Percentage (%)", num: "Number", from: "From value", to: "To value",
+            privacy: "Privacy Policy", terms: "Terms of Use", footer: "© 2026 %CALC ELITE", tools: "Our Elite Tools:",
+            privacyText: "<h3>Privacy Policy</h3><p>We do not collect data. All calculations stay in your browser.</p>",
+            termsText: "<h3>Terms of Use</h3><p>This tool is for informational purposes only.</p>",
+            seo: `<h2>Pro Percentage Calculator</h2><p>Quickly calculate percentages and differences for business or school.</p>`
+        },
+        uk: {
+            t1: "Розрахунок % від числа", t2: "Відсоткова різниця", perc: "Скільки %", num: "Від числа", from: "Початкове число", to: "Кінцеве число",
+            privacy: "Конфіденційність", terms: "Умови", footer: "© 2026 %CALC ELITE", tools: "Інші інструменти:",
+            privacyText: "<h3>Конфіденційність</h3><p>Ми не збираємо ваші дані. Все працює локально.</p>",
+            termsText: "<h3>Умови</h3><p>Інструмент для ознайомлення. Ми не несемо відповідальності за помилки.</p>",
+            seo: `<h2>Професійний калькулятор відсотків</h2><p>Швидко рахуйте відсотки та різницю онлайн. Ідеально для фінансів.</p>`
+        },
+        es: {
+            t1: "¿Cuánto es X% de Y?", t2: "Diferencia Porcentual", perc: "Porcentaje (%)", num: "Número", from: "De", to: "A",
+            privacy: "Privacidad", terms: "Términos", footer: "© 2026 %CALC ELITE", tools: "Otras herramientas:",
+            privacyText: "<h3>Privacidad</h3><p>No recopilamos datos personales.</p>",
+            termsText: "<h3>Términos</h3><p>Herramienta informativa.</p>",
+            seo: `<h2>Calculadora de Porcentajes</h2><p>Calcule porcentajes y diferencias rápidamente.</p>`
+        },
+        de: {
+            t1: "Was ist X% von Y?", t2: "Prozentuale Differenz", perc: "Prozent (%)", num: "Zahl", from: "Von Wert", to: "Zu Wert",
+            privacy: "Datenschutz", terms: "AGB", footer: "© 2026 %CALC ELITE", tools: "Andere Werkzeuge:",
+            privacyText: "<h3>Datenschutz</h3><p>Keine Datenspeicherung.</p>",
+            termsText: "<h3>AGB</h3><p>Nur zu Informationszwecken.</p>",
+            seo: `<h2>Prozentrechner Online</h2><p>Berechnen Sie Prozentsätze und Differenzen schnell und einfach.</p>`
+        }
+    };
+
+    let curLang = localStorage.getItem('lang_perc_elite') || 'en';
+
+    function changeLang(lang) {
+        curLang = lang;
+        localStorage.setItem('lang_perc_elite', lang);
+        updateUI();
     }
-};
 
-let cur = 'uk';
+    function updateUI() {
+        const l = translations[curLang] || translations['en'];
+        document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+        if(document.getElementById('btn-' + curLang)) document.getElementById('btn-' + curLang).classList.add('active');
 
-function setLang(lang) {
-    cur = lang;
-    const l = data[lang] || data['en'];
-    document.title = l.pageTitle;
-    document.getElementById('main-title').innerText = l.title;
-    document.getElementById('h3-t1').innerText = l.h1;
-    document.getElementById('h3-t2').innerText = l.h2;
-    document.getElementById('h3-t3').innerText = l.h3;
-    document.getElementById('t1-1').innerText = l.t1_1;
-    document.getElementById('t1-2').innerText = l.t1_2;
-    document.getElementById('t2-1').innerText = l.t2_1;
-    document.getElementById('t3-1').innerText = l.t3_1;
-    document.getElementById('t3-2').innerText = l.t3_2;
-    document.getElementById('seo-content').innerHTML = l.seo;
-    document.getElementById('footer-mission').innerText = l.mission;
-    document.getElementById('link-priv').innerText = l.privLabel;
-    document.getElementById('link-terms').innerText = l.termsLabel;
-    document.getElementById('footer-copy').innerText = l.title;
-    document.getElementById('txt-network').innerText = l.network;
+        document.getElementById('title-1').innerText = l.t1;
+        document.getElementById('title-2').innerText = l.t2;
+        document.getElementById('lbl-perc').innerText = l.perc;
+        document.getElementById('lbl-num').innerText = l.num;
+        document.getElementById('lbl-from').innerText = l.from;
+        document.getElementById('lbl-to').innerText = l.to;
+        document.getElementById('seo-box').innerHTML = l.seo;
+        document.getElementById('txt-footer').innerText = l.footer;
+        document.getElementById('link-privacy').innerText = l.privacy;
+        document.getElementById('link-terms').innerText = l.terms;
+        document.getElementById('txt-tools').innerText = l.tools;
+        calc1(); calc2();
+    }
 
-    document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
-    document.getElementById('btn-' + lang).classList.add('active');
-}
+    function calc1() {
+        const p = parseFloat(document.getElementById('p1').value) || 0;
+        const v = parseFloat(document.getElementById('v1').value) || 0;
+        const res = v * (p / 100);
+        document.getElementById('r1').innerText = res.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
+    }
 
-function calc1() {
-    const p = parseFloat(document.getElementById('t1-p').value), v = parseFloat(document.getElementById('t1-v').value);
-    document.getElementById('t1-res').value = (p && v) ? ((p / 100) * v).toFixed(2) : "";
-}
+    function calc2() {
+        const a = parseFloat(document.getElementById('v2a').value) || 0;
+        const b = parseFloat(document.getElementById('v2b').value) || 0;
+        if (a === 0) { document.getElementById('r2').innerText = "0.00%"; return; }
+        const diff = ((b - a) / a) * 100;
+        document.getElementById('r2').innerText = (diff > 0 ? "+" : "") + diff.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}) + "%";
+    }
 
-function calc2() {
-    const v1 = parseFloat(document.getElementById('t2-v1').value), v2 = parseFloat(document.getElementById('t2-v2').value);
-    document.getElementById('t2-res').value = (v1 && v2) ? ((v1 / v2) * 100).toFixed(2) + "%" : "";
-}
-
-function calc3() {
-    const v1 = parseFloat(document.getElementById('t3-v1').value), v2 = parseFloat(document.getElementById('t3-v2').value);
-    const res = document.getElementById('t3-res');
-    if(v1 && v2) {
-        const diff = ((v2 - v1) / v1) * 100;
-        res.value = (diff > 0 ? "+" : "") + diff.toFixed(2) + "%";
-        res.style.color = diff >= 0 ? "#22c55e" : "#ef4444";
-    } else res.value = "";
-}
-
-function openModal(type) {
-    const l = data[cur];
-    document.getElementById('modal-body').innerHTML = type === 'privacy' ? l.privText : l.termsText;
-    document.getElementById('modal').style.display = 'block';
-}
-
-function closeModal() { document.getElementById('modal').style.display = 'none'; }
-
-setLang('uk');
+    function openPol(type) {
+        const l = translations[curLang] || translations['en'];
+        document.getElementById('modalBody').innerHTML = type === 'privacy' ? l.privacyText : l.termsText; 
+        document.getElementById('siteModal').style.display = 'block';
+    }
+    function closeModal() { document.getElementById('siteModal').style.display = 'none'; }
+    window.onclick = function(event) { if (event.target == document.getElementById('siteModal')) closeModal(); }
+    updateUI();
 </script>
 </body>
 </html>
