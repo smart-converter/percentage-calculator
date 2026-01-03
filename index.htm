@@ -29,7 +29,7 @@
         .network-tools { max-width: 500px; margin: 20px auto; text-align: center; padding: 15px; border-top: 1px solid #1e293b; }
         .tool-link { display: inline-block; color: #22c55e; text-decoration: none; font-size: 13px; margin: 5px 10px; border: 1px solid #22c55e; padding: 5px 12px; border-radius: 20px; }
 
-        footer { padding: 20px; text-align: center; background: #0f172a; border-top: 1px solid #1e293b; }
+        footer { padding: 25px 20px; text-align: center; background: #0f172a; border: 1px solid #1e293b; border-radius: 15px; margin: 20px auto; max-width: 460px; }
         .footer-link { color: #22c55e; text-decoration: none; cursor: pointer; font-weight: bold; font-size: 13px; margin: 0 10px; }
 
         .modal { display: none; position: fixed; z-index: 99; left: 0; top: 0; width: 100%; height: 100%; background: rgba(15,23,42,0.9); }
@@ -93,30 +93,30 @@
     const translations = {
         en: {
             t1: "What is X% of Y?", t2: "Percentage Difference", perc: "Percentage (%)", num: "Number", from: "From value", to: "To value",
-            privacy: "Privacy Policy", terms: "Terms of Use", footer: "© 2026 %CALC ELITE", tools: "Our Elite Tools:",
+            privacy: "Privacy Policy", terms: "Terms of Use", footer: "© 2026 %CALC ELITE. All rights reserved. Secure and fast calculations.", tools: "Our Elite Tools:",
             privacyText: "<h3>Privacy Policy</h3><p>We do not collect data. All calculations stay in your browser.</p>",
-            termsText: "<h3>Terms of Use</h3><p>This tool is for informational purposes only.</p>",
+            termsText: "<h3>Terms of Use</h3><p>This tool is for informational purposes only. Accuracy is not guaranteed.</p>",
             seo: `<h2>Pro Percentage Calculator</h2><p>Quickly calculate percentages and differences for business or school.</p>`
         },
         uk: {
             t1: "Розрахунок % від числа", t2: "Відсоткова різниця", perc: "Скільки %", num: "Від числа", from: "Початкове число", to: "Кінцеве число",
-            privacy: "Конфіденційність", terms: "Умови", footer: "© 2026 %CALC ELITE", tools: "Інші інструменти:",
+            privacy: "Конфіденційність", terms: "Умови", footer: "© 2026 %CALC ELITE. Всі права захищено. Швидкі та безпечні розрахунки.", tools: "Інші інструменти:",
             privacyText: "<h3>Конфіденційність</h3><p>Ми не збираємо ваші дані. Все працює локально.</p>",
             termsText: "<h3>Умови</h3><p>Інструмент для ознайомлення. Ми не несемо відповідальності за помилки.</p>",
             seo: `<h2>Професійний калькулятор відсотків</h2><p>Швидко рахуйте відсотки та різницю онлайн. Ідеально для фінансів.</p>`
         },
         es: {
             t1: "¿Cuánto es X% de Y?", t2: "Diferencia Porcentual", perc: "Porcentaje (%)", num: "Número", from: "De", to: "A",
-            privacy: "Privacidad", terms: "Términos", footer: "© 2026 %CALC ELITE", tools: "Otras herramientas:",
-            privacyText: "<h3>Privacidad</h3><p>No recopilamos datos personales.</p>",
-            termsText: "<h3>Términos</h3><p>Herramienta informativa.</p>",
-            seo: `<h2>Calculadora de Porcentajes</h2><p>Calcule porcentajes y diferencias rápidamente.</p>`
+            privacy: "Privacidad", terms: "Términos", footer: "© 2026 %CALC ELITE. Todos los derechos reservados. Cálculos rápidos y seguros.", tools: "Otras herramientas:",
+            privacyText: "<h3>Privacidad</h3><p>No recopilamos datos personales. Los cálculos se realizan localmente.</p>",
+            termsText: "<h3>Términos</h3><p>Herramienta informativa solamente. No nos hacemos responsables de errores.</p>",
+            seo: `<h2>Calculadora de Porcentajes</h2><p>Calcule porcentajes y diferencias rápidamente para cualquier necesidad.</p>`
         },
         de: {
             t1: "Was ist X% von Y?", t2: "Prozentuale Differenz", perc: "Prozent (%)", num: "Zahl", from: "Von Wert", to: "Zu Wert",
-            privacy: "Datenschutz", terms: "AGB", footer: "© 2026 %CALC ELITE", tools: "Andere Werkzeuge:",
-            privacyText: "<h3>Datenschutz</h3><p>Keine Datenspeicherung.</p>",
-            termsText: "<h3>AGB</h3><p>Nur zu Informationszwecken.</p>",
+            privacy: "Datenschutz", terms: "AGB", footer: "© 2026 %CALC ELITE. Alle Rechte vorbehalten. Schnelle und sichere Berechnungen.", tools: "Andere Werkzeuge:",
+            privacyText: "<h3>Datenschutz</h3><p>Keine Datenspeicherung im Browser. Ihre Privatsphäre ist uns wichtig.</p>",
+            termsText: "<h3>AGB</h3><p>Nur zu Informationszwecken. Nutzung auf eigene Gefahr ohne Gewähr.</p>",
             seo: `<h2>Prozentrechner Online</h2><p>Berechnen Sie Prozentsätze und Differenzen schnell und einfach.</p>`
         }
     };
@@ -151,8 +151,7 @@
     function calc1() {
         const p = parseFloat(document.getElementById('p1').value) || 0;
         const v = parseFloat(document.getElementById('v1').value) || 0;
-        const res = v * (p / 100);
-        document.getElementById('r1').innerText = res.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
+        document.getElementById('r1').innerText = (v * (p / 100)).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
     }
 
     function calc2() {
