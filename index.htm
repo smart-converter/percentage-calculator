@@ -11,41 +11,47 @@
             --accent-green: #22c55e;
             --text-light: #f8fafc;
             --border-color: #334155;
+            --border-glow: rgba(255, 255, 255, 0.2);
         }
 
-        body { font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; margin: 0; padding: 0; background-color: var(--bg-dark); -webkit-font-smoothing: antialiased; color: var(--text-light); }
+        body { font-family: -apple-system, system-ui, sans-serif; margin: 0; padding: 0; background-color: var(--bg-dark); color: var(--text-light); -webkit-font-smoothing: antialiased; }
         
-        .top-header { background-color: #166534; padding: 12px 15px; display: flex; align-items: center; justify-content: space-between; color: white; border-bottom: 1px solid var(--border-color); }
-        .top-header h1 { margin: 0; font-size: 20px; font-weight: 900; letter-spacing: 0.5px; }
-        
+        .top-header { background-color: #166534; padding: 12px 15px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border-color); }
+        .top-header h1 { margin: 0; font-size: 20px; font-weight: 900; color: white; }
         .lang-switcher { background: var(--bg-dark); border: 2px solid white; color: white; padding: 4px 8px; border-radius: 8px; font-size: 15px; cursor: pointer; font-weight: 800; }
         
-        .container { max-width: 800px; margin: 0 auto; padding: 5px; background: var(--bg-dark); min-height: 100vh; box-sizing: border-box; }
+        .container { max-width: 800px; margin: 0 auto; padding: 5px; box-sizing: border-box; }
         
         .tabs-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background-color: #14532d; border: 1px solid #14532d; margin: 15px 0 10px; border-radius: 8px; overflow: hidden; }
-        .tab { background: #166534; color: #fff; height: 38px; text-align: center; cursor: pointer; font-size: 11px; font-weight: 900; text-transform: uppercase; border: none; display: flex; align-items: center; justify-content: center; }
+        .tab { background: #166534; color: #fff; height: 44px; text-align: center; cursor: pointer; font-size: 11px; font-weight: 900; text-transform: uppercase; display: flex; align-items: center; justify-content: center; }
         .tab.active { background: #fff; color: #166534; }
         
-        .converter-box { border: 1px solid var(--border-color); padding: 30px 20px; background: var(--card-bg); border-radius: 12px; margin-bottom: 5px; box-shadow: 0 4px 6px rgba(0,0,0,0.2); }
-        .row { display: flex; align-items: center; margin-bottom: 12px; }
-        .row label { width: 120px; font-size: 15px; color: #94a3b8; font-weight: 700; }
-        
-        .input-field { flex: 1; padding: 10px 12px; border: 1px solid var(--border-color); border-radius: 8px; font-size: 19px; font-weight: 800; width: 100%; box-sizing: border-box; height: 48px; background: #fff; color: #000; outline: none; }
-        #valOut { background: #f0fdf4; color: #166534; border-color: #22c55e; }
-
         .ad-space { background: rgba(255, 255, 255, 0.05); border: 1px dashed var(--border-color); margin: 10px 0; text-align: center; padding: 15px; color: #64748b; font-size: 11px; min-height: 90px; display: flex; align-items: center; justify-content: center; border-radius: 8px; }
         
+        .converter-box { border: 1px solid var(--border-color); padding: 30px 20px; background: var(--card-bg); border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.2); }
+        .row { display: flex; align-items: center; margin-bottom: 18px; }
+        .row label { width: 140px; font-size: 16px; color: #cbd5e1; font-weight: 700; }
+        .input-field { flex: 1; padding: 10px 12px; border: 1px solid var(--border-color); border-radius: 8px; font-size: 19px; font-weight: 800; background: #fff; color: #000; outline: none; width: 100%; }
+        .res-field { background: #f0fdf4 !important; color: #166534 !important; border-color: #22c55e !important; }
+
+        /* Сітка з 7 кнопок з центрованою останньою */
         .tools-network { padding: 20px 15px; text-align: center; border-top: 1px solid var(--border-color); margin-top: 20px; }
-        .tools-network h4 { margin: 0 0 12px 0; color: #64748b; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; }
-        .tool-link-btn { display: inline-block; padding: 8px 16px; margin: 5px; border: 1px solid var(--accent-green); color: var(--accent-green); text-decoration: none; border-radius: 8px; font-size: 12px; font-weight: 900; transition: 0.2s; }
+        .tools-network h4 { margin: 0 0 15px 0; color: #64748b; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; }
+        .tools-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .tool-link-btn { padding: 12px 5px; border: 1px solid var(--accent-green); color: var(--accent-green); text-decoration: none; border-radius: 8px; font-size: 12px; font-weight: 900; transition: 0.2s; display: flex; align-items: center; justify-content: center; }
         .tool-link-btn:hover { background: var(--accent-green); color: white; }
+        .tool-link-btn:last-child:nth-child(odd) {
+            grid-column: 1 / span 2;
+            justify-self: center;
+            width: calc(50% - 5px);
+        }
 
         footer { border-top: 1px solid var(--border-color); padding: 25px 15px; text-align: center; font-size: 13px; color: #94a3b8; }
-        .footer-info-block { border: 2px solid rgba(255, 255, 255, 0.3); border-radius: 12px; padding: 18px; margin-bottom: 15px; background: rgba(255, 255, 255, 0.05); }
+        .footer-info-block { border: 2px solid var(--border-glow); border-radius: 12px; padding: 18px; margin-bottom: 15px; background: rgba(255, 255, 255, 0.05); }
         .footer-link { color: var(--accent-green); text-decoration: underline; cursor: pointer; padding: 0 8px; font-weight: 900; }
         
         .modal { display: none; position: fixed; z-index: 10000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); overflow-y: auto; }
-        .modal-content { background: var(--card-bg); margin: 5% auto; padding: 25px; width: 90%; max-width: 600px; border-radius: 12px; position: relative; border: 2px solid rgba(255, 255, 255, 0.3); color: white; }
+        .modal-content { background: var(--card-bg); margin: 5% auto; padding: 25px; width: 90%; max-width: 600px; border-radius: 12px; position: relative; border: 2px solid var(--border-glow); color: white; }
         .close-btn { position: absolute; right: 10px; top: 0; font-size: 38px; cursor: pointer; padding: 10px; }
     </style>
 </head>
@@ -66,91 +72,109 @@
     <div class="ad-space">ADVERTISEMENT AREA</div>
     
     <div class="converter-box">
-        <div id="calc-ui">
-            </div>
+        <div id="calc-ui"></div>
         <div class="row" style="margin-top: 20px; border-top: 1px solid var(--border-color); padding-top: 20px;">
             <label id="lbl-result">Result:</label>
-            <input type="text" id="valOut" class="input-field" readonly>
+            <input type="text" id="valOut" class="input-field res-field" readonly>
         </div>
     </div>
 
     <div class="tools-network">
         <h4 id="txt-other-tools">Other Elite Tools</h4>
-        <a href="https://smart-converter.github.io/unit-converter/" class="tool-link-btn">Unit Converter</a>
-        <a href="https://smart-converter.github.io/currency-converter/" class="tool-link-btn">Currency Converter</a>
-        <a href="https://smart-converter.github.io/vat-calculator/" class="tool-link-btn">VAT Calculator</a>
-        <a href="https://smart-converter.github.io/loan-calculator/" class="tool-link-btn">Loan Calculator</a>
-        <a href="https://smart-converter.github.io/discount-calculator/" class="tool-link-btn">Discount Calculator</a>
-        <a href="https://smart-converter.github.io/tip-calculator/" class="tool-link-btn">Tip Calculator</a>
-        <a href="https://smart-converter.github.io/bmi-calculator/" class="tool-link-btn">BMI Calculator</a>
+        <div class="tools-grid">
+            <a href="https://smart-converter.github.io/unit-converter/" class="tool-link-btn" id="lnk-unit">Unit Converter</a>
+            <a href="https://smart-converter.github.io/currency-converter/" class="tool-link-btn" id="lnk-cur">Currency Converter</a>
+            <a href="https://smart-converter.github.io/vat-calculator/" class="tool-link-btn" id="lnk-vat">VAT Calculator</a>
+            <a href="https://smart-converter.github.io/loan-calculator/" class="tool-link-btn" id="lnk-loan">Loan Calculator</a>
+            <a href="https://smart-converter.github.io/discount-calculator/" class="tool-link-btn" id="lnk-disc">Discount Calc</a>
+            <a href="https://smart-converter.github.io/tip-calculator/" class="tool-link-btn" id="lnk-tip">Tip Calculator</a>
+            <a href="https://smart-converter.github.io/bmi-calculator/" class="tool-link-btn" id="lnk-bmi">BMI Calculator</a>
+        </div>
     </div>
 </div>
 
 <footer>
     <div class="footer-info-block" id="footer-full-text"></div>
-    <p>© 2026 SmartPercentage.io - Precision Calculations</p>
-    <div style="margin-top:10px;">
-        <span class="footer-link" onclick="openPol('privacy')" id="link-privacy">Privacy</span>
-        <span class="footer-link" onclick="openPol('terms')" id="link-terms">Terms</span>
+    <p>© 2026 SmartPercentage.io</p>
+    <div>
+        <span class="footer-link" onclick="openPol('privacy')" id="link-privacy">Privacy Policy</span>
+        <span class="footer-link" onclick="openPol('terms')" id="link-terms">Terms of Use</span>
     </div>
 </footer>
 
 <div id="siteModal" class="modal" onclick="if(event.target == this) closeModal()">
-    <div class="modal-content">
-        <span class="close-btn" onclick="closeModal()">×</span>
-        <div id="modalBody"></div>
-    </div>
+    <div class="modal-content"><span class="close-btn" onclick="closeModal()">×</span><div id="modalBody"></div></div>
 </div>
 
 <script>
     const translations = {
         en: {
             res: "Result:", other: "Other Elite Tools", cats: ["Basic %", "Difference", "Increase"],
-            l1: "Percentage %", l2: "Of Number", l3: "From Value", l4: "To Value", l5: "Initial Value",
-            footer: "SmartPercentage.io provides high-accuracy financial and mathematical tools for professionals and students.",
-            priv: "<h2>Privacy</h2><p>Calculations are private and local.</p>",
-            terms: "<h2>Terms</h2><p>Provided for informational purposes.</p>"
+            l1: "Percentage %", l2: "Of Number", l3: "Initial Value", l4: "Final Value", l5: "Value",
+            unit: "Unit Converter", cur: "Currency Converter", vat: "VAT Calculator", loan: "Loan Calculator", disc: "Discount Calc", tip: "Tip Calculator", bmi: "BMI Calculator",
+            footer: "SmartPercentage.io provides high-accuracy financial and mathematical tools for professionals.",
+            privacy: "Privacy Policy", terms: "Terms of Use",
+            privText: "<h2>Privacy</h2><p>Calculations are private and local.</p>", termsText: "<h2>Terms</h2><p>For info only.</p>"
         },
         uk: {
             res: "Результат:", other: "Інші професійні інструменти", cats: ["Базовий %", "Різниця", "Приріст"],
             l1: "Відсоток %", l2: "Від числа", l3: "Початкове", l4: "Кінцеве", l5: "Значення",
+            unit: "Конвертер", cur: "Курси валют", vat: "ПДВ", loan: "Кредити", disc: "Знижки", tip: "Чайові", bmi: "Індекс маси",
             footer: "SmartPercentage.io надає високоточні фінансові та математичні інструменти для щоденних розрахунків.",
-            priv: "<h2>Конфіденційність</h2><p>Розрахунки проводяться локально.</p>",
-            terms: "<h2>Умови</h2><p>Тільки для ознайомлення.</p>"
+            privacy: "Конфіденційність", terms: "Умови",
+            privText: "<h2>Конфіденційність</h2><p>Розрахунки проводяться локально.</p>", termsText: "<h2>Умови</h2><p>Тільки для ознайомлення.</p>"
         },
         es: {
             res: "Resultado:", other: "Otras herramientas", cats: ["Básico %", "Diferencia", "Aumento"],
             l1: "Porcentaje %", l2: "Del número", l3: "Valor inicial", l4: "Valor final", l5: "Valor",
-            footer: "SmartPercentage.io ofrece herramientas matemáticas de alta precisión.",
-            priv: "<h2>Privacidad</h2><p>Sin recolección de datos.</p>",
-            terms: "<h2>Términos</h2><p>Uso informativo.</p>"
+            unit: "Convertidor", cur: "Moneda", vat: "IVA", loan: "Préstamos", disc: "Descuento", tip: "Propina", bmi: "IMC",
+            footer: "SmartPercentage.io ofrece herramientas matemáticas de alta precisión para profesionales.",
+            privacy: "Privacidad", terms: "Términos",
+            privText: "<h2>Privacidad</h2><p>Sin recolección de datos.</p>", termsText: "<h2>Términos</h2><p>Solo para información.</p>"
         },
         de: {
             res: "Ergebnis:", other: "Andere Werkzeuge", cats: ["Basis %", "Differenz", "Zunahme"],
-            l1: "Prozent %", l2: "Von Zahl", l3: "Von Wert", l4: "Zu Wert", l5: "Wert",
-            footer: "SmartPercentage.io bietet hochpräzise mathematische Werkzeuge.",
-            priv: "<h2>Datenschutz</h2><p>Lokale Berechnungen.</p>",
-            terms: "<h2>AGB</h2><p>Nur zur Information.</p>"
+            l1: "Prozent %", l2: "Von Zahl", l3: "Initialwert", l4: "Endwert", l5: "Wert",
+            unit: "Konverter", cur: "Währung", vat: "MwSt", loan: "Kredit", disc: "Rabatt", tip: "Trinkgeld", bmi: "BMI",
+            footer: "SmartPercentage.io bietet hochpräzise mathematische Werkzeuge für den professionellen Einsatz.",
+            privacy: "Datenschutz", terms: "AGB",
+            privText: "<h2>Datenschutz</h2><p>Lokale Berechnungen.</p>", termsText: "<h2>AGB</h2><p>Nur zur Information.</p>"
         }
     };
 
     let curLang = localStorage.getItem('lang_perc') || 'en';
     let currentTab = 0;
 
-    function changeLang(lang) { curLang = lang; localStorage.setItem('lang_perc', lang); updateUI(); }
+    function changeLang(lang) { 
+        curLang = lang; 
+        localStorage.setItem('lang_perc', lang); 
+        updateUI(); 
+    }
 
     function updateUI() {
-        const l = translations[curLang];
+        const l = translations[curLang] || translations.en;
         document.getElementById('langSelect').value = curLang;
         document.getElementById('lbl-result').innerText = l.res;
         document.getElementById('txt-other-tools').innerText = l.other;
         document.getElementById('footer-full-text').innerText = l.footer;
+        document.getElementById('link-privacy').innerText = l.privacy;
+        document.getElementById('link-terms').innerText = l.terms;
+        
+        document.getElementById('lnk-unit').innerText = l.unit;
+        document.getElementById('lnk-cur').innerText = l.cur;
+        document.getElementById('lnk-vat').innerText = l.vat;
+        document.getElementById('lnk-loan').innerText = l.loan;
+        document.getElementById('lnk-disc').innerText = l.disc;
+        document.getElementById('lnk-tip').innerText = l.tip;
+        document.getElementById('lnk-bmi').innerText = l.bmi;
+        
         initTabs();
     }
 
     function initTabs() {
         const t = document.getElementById('tabs'); t.innerHTML = '';
-        translations[curLang].cats.forEach((cat, i) => {
+        const l = translations[curLang] || translations.en;
+        l.cats.forEach((cat, i) => {
             const d = document.createElement('div');
             d.className = `tab ${i === currentTab ? 'active' : ''}`;
             d.innerText = cat;
@@ -161,7 +185,7 @@
     }
 
     function renderCalc() {
-        const l = translations[curLang];
+        const l = translations[curLang] || translations.en;
         const container = document.getElementById('calc-ui');
         let html = '';
         if (currentTab === 0) {
@@ -187,12 +211,12 @@
         else if (currentTab === 1) res = a !== 0 ? ((b - a) / a) * 100 : 0;
         else res = a + (a * (b / 100));
         
-        out.value = currentTab === 1 ? res.toFixed(2) + "%" : res.toLocaleString();
+        out.value = currentTab === 1 ? res.toFixed(2) + "%" : res.toLocaleString(undefined, {maximumFractionDigits: 2});
     }
 
     function openPol(type) {
-        const l = translations[curLang];
-        document.getElementById('modalBody').innerHTML = type === 'privacy' ? l.priv : l.terms;
+        const l = translations[curLang] || translations.en;
+        document.getElementById('modalBody').innerHTML = type === 'privacy' ? l.privText : l.termsText;
         document.getElementById('siteModal').style.display = 'block';
     }
     function closeModal() { document.getElementById('siteModal').style.display = 'none'; }
