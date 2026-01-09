@@ -2,22 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Percentage Calculator Pro - Fast & Accurate Online Tool</title>
-    <meta name="description" content="Free professional percentage calculator. Calculate basic percentages, difference, and increase or decrease instantly and accurately.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Percentage Calculator Pro</title>
+    <meta name="description" content="Calculate percentages, difference, and growth instantly.">
     
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "Smart Percentage Calculator",
-      "url": "https://smart-converter.github.io/percentage-calculator/",
-      "applicationCategory": "FinanceApplication",
-      "operatingSystem": "All",
-      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
-    }
-    </script>
-
     <style>
         :root {
             --bg-dark: #0f172a;
@@ -26,106 +14,120 @@
             --text-light: #f8fafc;
             --text-muted: #cbd5e1;
             --border-color: #334155;
-            --border-glow: rgba(255, 255, 255, 0.1);
         }
 
         body { 
-            font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-            margin: 0; padding: 0; background-color: var(--bg-dark); color: var(--text-light); 
-            -webkit-font-smoothing: antialiased; font-display: swap; 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; 
+            margin: 0; background-color: var(--bg-dark); color: var(--text-light); 
         }
         
-        /* HEADER - FIXED HEIGHT FOR CLS */
-        .top-header { background-color: #166534; height: 56px; padding: 0 15px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border-color); box-sizing: border-box; }
-        .top-header h1 { margin: 0; font-size: 18px; font-weight: 900; color: white; letter-spacing: 0.5px; }
+        .top-header { background-color: #166534; height: 50px; padding: 0 15px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border-color); }
+        .top-header h1 { margin: 0; font-size: 18px; font-weight: 900; color: white; }
         
-        .lang-switcher { background: var(--bg-dark); border: 1.5px solid white; color: white; padding: 4px 6px; border-radius: 6px; font-size: 13px; cursor: pointer; font-weight: 700; outline: none; }
-        .lang-switcher option { color: #333; }
+        .lang-switcher { background: var(--bg-dark); border: 1.5px solid white; color: white; padding: 3px 6px; border-radius: 6px; font-size: 12px; font-weight: 700; }
         
-        .container { max-width: 600px; margin: 0 auto; padding: 10px; box-sizing: border-box; min-height: 100vh; }
+        .container { max-width: 600px; margin: 0 auto; padding: 10px; box-sizing: border-box; }
         
-        /* TABS - EXACTLY LIKE UNIT CONVERTER */
+        /* ТАБИ ЯК У UNIT CONVERTER */
         .tabs-grid { 
             display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; 
             background-color: #14532d; border: 1px solid #14532d; 
-            margin: 10px 0; border-radius: 8px; overflow: hidden; height: 44px;
+            margin: 10px 0; border-radius: 8px; overflow: hidden; height: 42px;
         }
         .tab { 
             background: #166534; color: #fff; border: none; cursor: pointer; 
-            font-size: 11px; font-weight: 800; text-transform: uppercase; 
-            display: flex; align-items: center; justify-content: center; height: 100%; transition: 0.2s;
+            font-size: 10px; font-weight: 800; text-transform: uppercase; 
+            display: flex; align-items: center; justify-content: center;
         }
         .tab.active { background: #fff; color: #166534; }
         
-        .ad-space { 
-            background: rgba(255, 255, 255, 0.03); border: 1px dashed var(--border-color); 
-            margin: 10px 0; text-align: center; color: var(--text-muted); 
-            font-size: 10px; height: 90px; display: flex; align-items: center; justify-content: center; border-radius: 8px; 
-        }
-        
-        .converter-box { border: 1px solid var(--border-color); padding: 25px 20px; background: var(--card-bg); border-radius: 12px; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3); }
-        .row { display: flex; align-items: center; margin-bottom: 15px; }
-        .row label { width: 120px; font-size: 14px; color: var(--text-muted); font-weight: 600; }
+        .converter-box { border: 1px solid var(--border-color); padding: 20px; background: var(--card-bg); border-radius: 12px; }
+        .row { display: flex; align-items: center; margin-bottom: 12px; }
+        .row label { width: 110px; font-size: 13px; color: var(--text-muted); font-weight: 600; }
         .input-field { 
-            flex: 1; padding: 12px; border: 1px solid var(--border-color); border-radius: 8px; 
-            font-size: 18px; font-weight: 800; background: #fff; color: #000; outline: none; width: 100%; box-sizing: border-box; 
+            flex: 1; padding: 10px; border: 1px solid var(--border-color); border-radius: 8px; 
+            font-size: 17px; font-weight: 800; background: #fff; color: #000; outline: none; 
         }
         .res-field { background: #f0fdf4 !important; color: #166534 !important; border: 2px solid #22c55e !important; }
 
-        /* SEO CONTENT - CLEAN & READABLE */
-        .seo-content { padding: 20px 5px; line-height: 1.6; font-size: 14px; color: var(--text-muted); }
-        .seo-content h2 { color: var(--accent-green); font-size: 18px; margin: 20px 0 10px; font-weight: 800; border-bottom: 1px solid var(--border-color); padding-bottom: 5px; }
-
-        /* TOOLS NETWORK - IDENTICAL TO UNIT CONVERTER */
-        .tools-network { padding: 20px 0; text-align: center; border-top: 1px solid var(--border-color); }
-        .tools-network h4 { margin: 0 0 15px 0; color: var(--text-muted); font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 700; }
-        .tools-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; max-width: 400px; margin: 0 auto; }
-        .tool-link-btn { 
-            padding: 10px 5px; border: 1px solid var(--accent-green); color: var(--accent-green); 
-            text-decoration: none; border-radius: 8px; font-size: 11px; font-weight: 800; 
-            display: flex; align-items: center; justify-content: center; min-height: 40px; box-sizing: border-box;
-        }
-        .tool-link-btn:last-child:nth-child(odd) { grid-column: 1 / span 2; width: calc(50% - 4px); justify-self: center; }
-
-        /* FOOTER - COMPACT & CENTERED */
-        footer { border-top: 1px solid var(--border-color); padding: 30px 15px; text-align: center; font-size: 12px; color: var(--text-muted); }
-        .footer-info-block { 
-            border: 1px solid var(--border-glow); border-radius: 12px; padding: 15px; 
-            margin: 0 auto 20px auto; background: rgba(255, 255, 255, 0.02); 
-            text-align: left; max-width: 500px; line-height: 1.5; font-size: 13px;
-        }
-        .footer-link { color: var(--accent-green); text-decoration: none; cursor: pointer; padding: 5px 10px; font-weight: 700; display: inline-block; }
+        /* СІТКА ІНСТРУМЕНТІВ (ВИПРАВЛЕНО) */
+        .tools-network { padding: 20px 0; text-align: center; }
+        .tools-network h4 { margin: 0 0 12px 0; color: var(--text-muted); font-size: 11px; text-transform: uppercase; letter-spacing: 1px; }
         
-        .modal { display: none; position: fixed; z-index: 10000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); overflow-y: auto; }
-        .modal-content { background: var(--card-bg); margin: 10% auto; padding: 25px; width: 85%; max-width: 500px; border-radius: 15px; position: relative; border: 1px solid var(--border-color); color: white; }
-        .close-btn { position: absolute; right: 15px; top: 5px; font-size: 32px; cursor: pointer; }
+        .tools-grid { 
+            display: grid; 
+            grid-template-columns: repeat(2, 1fr); 
+            gap: 8px; 
+            max-width: 440px; /* Обмеження ширини щоб не розтягувались */
+            margin: 0 auto; 
+        }
+        
+        .tool-link-btn { 
+            padding: 8px 4px; 
+            border: 1px solid var(--accent-green); 
+            color: var(--accent-green); 
+            text-decoration: none; 
+            border-radius: 8px; 
+            font-size: 12px; 
+            font-weight: 800; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            height: 44px; /* Фіксована висота як у UNIT */
+            box-sizing: border-box;
+            background: rgba(34, 197, 94, 0.05);
+        }
+        
+        /* Остання кнопка по центру якщо їх непарна кількість */
+        .tool-link-btn:last-child:nth-child(odd) { 
+            grid-column: 1 / span 2; 
+            width: calc(50% - 4px); 
+            justify-self: center; 
+        }
+
+        /* ФУТЕР (КОМПАКТНИЙ ТА НЕ ВИЙТЯГНУТИЙ) */
+        footer { border-top: 1px solid var(--border-color); padding: 25px 10px; text-align: center; }
+        
+        .footer-info-block { 
+            border: 1px solid rgba(255, 255, 255, 0.1); 
+            border-radius: 10px; 
+            padding: 15px; 
+            margin: 0 auto 20px auto; 
+            background: rgba(255, 255, 255, 0.02); 
+            text-align: left; 
+            max-width: 480px; /* Обмеження ширини тексту */
+            line-height: 1.5; 
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+        
+        .footer-link { color: var(--accent-green); text-decoration: none; font-weight: 700; margin: 0 10px; font-size: 12px; cursor: pointer; }
+        
+        .modal { display: none; position: fixed; z-index: 999; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); }
+        .modal-content { background: var(--card-bg); margin: 15% auto; padding: 20px; width: 85%; max-width: 450px; border-radius: 12px; position: relative; font-size: 14px; }
+        .close-btn { position: absolute; right: 10px; top: 5px; font-size: 28px; cursor: pointer; }
     </style>
 </head>
 <body>
 
 <header class="top-header">
     <h1>SmartPercentage.io</h1>
-    <select class="lang-switcher" onchange="changeLang(this.value)" id="langSelect" aria-label="Language">
-        <option value="en">English</option>
-        <option value="uk">Українська</option>
-        <option value="es">Español</option>
-        <option value="de">Deutsch</option>
+    <select class="lang-switcher" onchange="changeLang(this.value)" id="langSelect">
+        <option value="en">EN</option>
+        <option value="uk">UA</option>
     </select>
 </header>
 
 <main class="container">
     <div id="tabs" class="tabs-grid"></div>
-    <div class="ad-space">ADVERTISEMENT</div>
     
     <section class="converter-box">
         <div id="calc-ui"></div>
         <div class="row" style="margin-top: 15px; border-top: 1px solid var(--border-color); padding-top: 15px;">
-            <label id="lbl-result" for="valOut">Result:</label>
+            <label id="lbl-result">Result:</label>
             <input type="text" id="valOut" class="input-field res-field" readonly>
         </div>
     </section>
-
-    <div class="seo-content" id="seo-box"></div>
 
     <div class="tools-network">
         <h4 id="txt-other-tools">Other Elite Tools</h4>
@@ -143,7 +145,7 @@
 
 <footer>
     <div class="footer-info-block" id="footer-full-text"></div>
-    <p>© 2026 SmartPercentage.io - Precise Financial Tools</p>
+    <p style="font-size: 11px; color: #64748b;">© 2026 SmartPercentage.io</p>
     <div>
         <span class="footer-link" onclick="openPol('privacy')" id="link-privacy">Privacy</span>
         <span class="footer-link" onclick="openPol('terms')" id="link-terms">Terms</span>
@@ -158,20 +160,18 @@
     const translations = {
         en: {
             res: "Result:", other: "Other Elite Tools", cats: ["Basic %", "Difference", "Increase"],
-            l1: "Percentage %", l2: "Of Number", l3: "Initial Value", l4: "Final Value", l5: "Value",
-            footer: "SmartPercentage.io is your go-to destination for high-precision percentage calculations. We use advanced algorithms to ensure 100% accuracy for business and students.",
-            seo: `<h2>Why Use Our Calculator?</h2><p>Our tool supports three main modes: finding a percentage of a number, calculating differences, and adding increases.</p>`,
+            l1: "Percent %", l2: "Of Number", l3: "Initial", l4: "Final", l5: "Value",
+            footer: "SmartPercentage.io provides high-precision percentage calculations for business and education. Our tools ensure 100% accuracy for margins, growth, and daily math tasks.",
             privacy: "Privacy Policy", terms: "Terms of Use",
-            privText: "<h2>Privacy</h2><p>We do not store any data. Calculations are local.</p>",
-            termsText: "<h2>Terms</h2><p>For informational purposes only.</p>"
+            privText: "<h2>Privacy</h2><p>All calculations are local. We don't store your data.</p>",
+            termsText: "<h2>Terms</h2><p>For informational use only.</p>"
         },
         uk: {
             res: "Результат:", other: "Інші професійні інструменти", cats: ["Базовий %", "Різниця", "Приріст"],
             l1: "Відсоток %", l2: "Від числа", l3: "Початкове", l4: "Кінцеве", l5: "Значення",
-            footer: "SmartPercentage.io — це ваш надійний помічник для високоточних розрахунків відсотків. Ми використовуємо сучасні алгоритми для 100% точності.",
-            seo: `<h2>Навіщо потрібен наш калькулятор?</h2><p>Наш інструмент підтримує три основні режими: знаходження відсотка, розрахунок різниці та приросту.</p>`,
+            footer: "SmartPercentage.io надає високоточні розрахунки відсотків для бізнесу та навчання. Наші інструменти гарантують 100% точність для розрахунку маржі, приросту та щоденних завдань.",
             privacy: "Конфіденційність", terms: "Умови",
-            privText: "<h2>Конфіденційність</h2><p>Ми не зберігаємо дані. Розрахунки локальні.</p>",
+            privText: "<h2>Конфіденційність</h2><p>Розрахунки відбуваються локально. Ми не зберігаємо ваші дані.</p>",
             termsText: "<h2>Умови</h2><p>Тільки для інформаційних цілей.</p>"
         }
     };
@@ -179,11 +179,7 @@
     let curLang = localStorage.getItem('lang_perc') || 'en';
     let currentTab = 0;
 
-    function changeLang(lang) { 
-        curLang = lang; 
-        localStorage.setItem('lang_perc', lang); 
-        updateUI(); 
-    }
+    function changeLang(lang) { curLang = lang; localStorage.setItem('lang_perc', lang); updateUI(); }
 
     function updateUI() {
         const l = translations[curLang] || translations.en;
@@ -193,7 +189,6 @@
         document.getElementById('footer-full-text').innerText = l.footer;
         document.getElementById('link-privacy').innerText = l.privacy;
         document.getElementById('link-terms').innerText = l.terms;
-        document.getElementById('seo-box').innerHTML = l.seo;
         initTabs();
     }
 
