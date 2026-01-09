@@ -4,9 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Percentage Calculator Pro - Fast & Accurate Online Tool</title>
-    
-    <meta name="description" content="Free professional percentage calculator. Calculate basic percentages, percentage difference, and percentage increase or decrease instantly and accurately.">
-    <meta name="keywords" content="percentage calculator, percent difference, percentage increase, math tool, online calculator">
+    <meta name="description" content="Free professional percentage calculator. Calculate basic percentages, difference, and increase or decrease instantly and accurately.">
     
     <script type="application/ld+json">
     {
@@ -16,8 +14,7 @@
       "url": "https://smart-converter.github.io/percentage-calculator/",
       "applicationCategory": "FinanceApplication",
       "operatingSystem": "All",
-      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-      "featureList": ["Basic Percentage", "Percentage Difference", "Percentage Increase/Decrease"]
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
     }
     </script>
 
@@ -29,83 +26,86 @@
             --text-light: #f8fafc;
             --text-muted: #cbd5e1;
             --border-color: #334155;
-            --border-glow: rgba(255, 255, 255, 0.2);
+            --border-glow: rgba(255, 255, 255, 0.1);
         }
 
         body { 
-            font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; 
+            font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
             margin: 0; padding: 0; background-color: var(--bg-dark); color: var(--text-light); 
-            -webkit-font-smoothing: antialiased; 
-            font-display: swap; 
+            -webkit-font-smoothing: antialiased; font-display: swap; 
         }
         
-        /* Fixed height to prevent CLS */
-        .top-header { background-color: #166534; height: 50px; padding: 0 15px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border-color); color: white; }
-        .top-header h1 { margin: 0; font-size: 20px; font-weight: 900; }
+        /* HEADER - FIXED HEIGHT FOR CLS */
+        .top-header { background-color: #166534; height: 56px; padding: 0 15px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border-color); box-sizing: border-box; }
+        .top-header h1 { margin: 0; font-size: 18px; font-weight: 900; color: white; letter-spacing: 0.5px; }
         
-        .lang-switcher { background: var(--bg-dark); border: 2px solid white; color: white; padding: 4px 8px; border-radius: 8px; font-size: 15px; cursor: pointer; font-weight: 800; }
+        .lang-switcher { background: var(--bg-dark); border: 1.5px solid white; color: white; padding: 4px 6px; border-radius: 6px; font-size: 13px; cursor: pointer; font-weight: 700; outline: none; }
         .lang-switcher option { color: #333; }
         
-        .container { max-width: 800px; margin: 0 auto; padding: 5px; box-sizing: border-box; min-height: 100vh; }
+        .container { max-width: 600px; margin: 0 auto; padding: 10px; box-sizing: border-box; min-height: 100vh; }
         
-        /* Fixed height for tabs to prevent CLS */
+        /* TABS - EXACTLY LIKE UNIT CONVERTER */
         .tabs-grid { 
             display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; 
             background-color: #14532d; border: 1px solid #14532d; 
-            margin: 15px 0 10px; border-radius: 8px; overflow: hidden;
-            height: 48px; min-height: 48px; 
+            margin: 10px 0; border-radius: 8px; overflow: hidden; height: 44px;
         }
-        .tab { background: #166534; color: #fff; height: 48px; text-align: center; cursor: pointer; font-size: 11px; font-weight: 900; text-transform: uppercase; display: flex; align-items: center; justify-content: center; border: none; width: 100%; }
+        .tab { 
+            background: #166534; color: #fff; border: none; cursor: pointer; 
+            font-size: 11px; font-weight: 800; text-transform: uppercase; 
+            display: flex; align-items: center; justify-content: center; height: 100%; transition: 0.2s;
+        }
         .tab.active { background: #fff; color: #166534; }
         
         .ad-space { 
-            background: rgba(255, 255, 255, 0.05); border: 1px dashed var(--border-color); 
-            margin: 10px 0; text-align: center; padding: 15px; color: var(--text-muted); 
-            font-size: 11px; height: 90px; min-height: 90px; display: flex; align-items: center; justify-content: center; border-radius: 8px; 
+            background: rgba(255, 255, 255, 0.03); border: 1px dashed var(--border-color); 
+            margin: 10px 0; text-align: center; color: var(--text-muted); 
+            font-size: 10px; height: 90px; display: flex; align-items: center; justify-content: center; border-radius: 8px; 
         }
         
-        .converter-box { border: 1px solid var(--border-color); padding: 30px 20px; background: var(--card-bg); border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.2); }
-        .row { display: flex; align-items: center; margin-bottom: 18px; }
-        .row label { width: 140px; font-size: 16px; color: var(--text-muted); font-weight: 700; }
-        .input-field { flex: 1; padding: 10px 12px; border: 1px solid var(--border-color); border-radius: 8px; font-size: 19px; font-weight: 800; background: #fff; color: #000; outline: none; width: 100%; box-sizing: border-box; height: 48px; }
-        .res-field { background: #f0fdf4 !important; color: #166534 !important; border-color: #22c55e !important; }
-
-        .seo-content { padding: 15px; line-height: 1.7; font-size: 15px; color: var(--text-muted); border-top: 1px solid var(--border-color); margin-top: 20px; min-height: 200px; }
-        .seo-content h2 { color: var(--accent-green); font-size: 19px; margin: 20px 0 10px; border-bottom: 1px solid var(--border-color); padding-bottom: 5px; font-weight: 900; }
-
-        /* FIXED COMPACT TOOLS GRID (Matching Unit Converter) */
-        .tools-network { padding: 15px; text-align: center; border-top: 1px solid var(--border-color); margin-top: 20px; }
-        .tools-network h4 { margin: 0 0 12px 0; color: var(--text-muted); font-size: 12px; text-transform: uppercase; letter-spacing: 1px; }
-        .tools-grid { 
-            display: grid; grid-template-columns: 1fr 1fr; gap: 8px; 
-            max-width: 500px; margin: 0 auto; 
+        .converter-box { border: 1px solid var(--border-color); padding: 25px 20px; background: var(--card-bg); border-radius: 12px; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3); }
+        .row { display: flex; align-items: center; margin-bottom: 15px; }
+        .row label { width: 120px; font-size: 14px; color: var(--text-muted); font-weight: 600; }
+        .input-field { 
+            flex: 1; padding: 12px; border: 1px solid var(--border-color); border-radius: 8px; 
+            font-size: 18px; font-weight: 800; background: #fff; color: #000; outline: none; width: 100%; box-sizing: border-box; 
         }
+        .res-field { background: #f0fdf4 !important; color: #166534 !important; border: 2px solid #22c55e !important; }
+
+        /* SEO CONTENT - CLEAN & READABLE */
+        .seo-content { padding: 20px 5px; line-height: 1.6; font-size: 14px; color: var(--text-muted); }
+        .seo-content h2 { color: var(--accent-green); font-size: 18px; margin: 20px 0 10px; font-weight: 800; border-bottom: 1px solid var(--border-color); padding-bottom: 5px; }
+
+        /* TOOLS NETWORK - IDENTICAL TO UNIT CONVERTER */
+        .tools-network { padding: 20px 0; text-align: center; border-top: 1px solid var(--border-color); }
+        .tools-network h4 { margin: 0 0 15px 0; color: var(--text-muted); font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 700; }
+        .tools-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; max-width: 400px; margin: 0 auto; }
         .tool-link-btn { 
-            padding: 8px 5px; border: 1px solid var(--accent-green); color: var(--accent-green); 
-            text-decoration: none; border-radius: 6px; font-size: 11px; font-weight: 800; 
-            display: flex; align-items: center; justify-content: center; min-height: 38px; transition: 0.2s; 
+            padding: 10px 5px; border: 1px solid var(--accent-green); color: var(--accent-green); 
+            text-decoration: none; border-radius: 8px; font-size: 11px; font-weight: 800; 
+            display: flex; align-items: center; justify-content: center; min-height: 40px; box-sizing: border-box;
         }
         .tool-link-btn:last-child:nth-child(odd) { grid-column: 1 / span 2; width: calc(50% - 4px); justify-self: center; }
 
-        /* FIXED COMPACT FOOTER (Matching Unit Converter) */
-        footer { border-top: 1px solid var(--border-color); padding: 20px 15px; text-align: center; font-size: 12px; color: var(--text-muted); }
+        /* FOOTER - COMPACT & CENTERED */
+        footer { border-top: 1px solid var(--border-color); padding: 30px 15px; text-align: center; font-size: 12px; color: var(--text-muted); }
         .footer-info-block { 
-            border: 1px solid var(--border-glow); border-radius: 10px; padding: 15px; 
-            margin: 0 auto 15px auto; background: rgba(255, 255, 255, 0.03); 
-            text-align: left; max-width: 600px; line-height: 1.5; 
+            border: 1px solid var(--border-glow); border-radius: 12px; padding: 15px; 
+            margin: 0 auto 20px auto; background: rgba(255, 255, 255, 0.02); 
+            text-align: left; max-width: 500px; line-height: 1.5; font-size: 13px;
         }
         .footer-link { color: var(--accent-green); text-decoration: none; cursor: pointer; padding: 5px 10px; font-weight: 700; display: inline-block; }
         
         .modal { display: none; position: fixed; z-index: 10000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); overflow-y: auto; }
-        .modal-content { background: var(--card-bg); margin: 5% auto; padding: 25px; width: 90%; max-width: 600px; border-radius: 12px; position: relative; border: 2px solid var(--border-glow); color: white; line-height: 1.6; }
-        .close-btn { position: absolute; right: 10px; top: 0; font-size: 38px; cursor: pointer; padding: 10px; }
+        .modal-content { background: var(--card-bg); margin: 10% auto; padding: 25px; width: 85%; max-width: 500px; border-radius: 15px; position: relative; border: 1px solid var(--border-color); color: white; }
+        .close-btn { position: absolute; right: 15px; top: 5px; font-size: 32px; cursor: pointer; }
     </style>
 </head>
 <body>
 
 <header class="top-header">
     <h1>SmartPercentage.io</h1>
-    <select class="lang-switcher" onchange="changeLang(this.value)" id="langSelect" aria-label="Select language">
+    <select class="lang-switcher" onchange="changeLang(this.value)" id="langSelect" aria-label="Language">
         <option value="en">English</option>
         <option value="uk">Українська</option>
         <option value="es">Español</option>
@@ -114,47 +114,44 @@
 </header>
 
 <main class="container">
-    <nav id="tabs" class="tabs-grid" aria-label="Calculation modes"></nav>
-    <div class="ad-space" aria-hidden="true">ADVERTISEMENT AREA</div>
+    <div id="tabs" class="tabs-grid"></div>
+    <div class="ad-space">ADVERTISEMENT</div>
     
     <section class="converter-box">
         <div id="calc-ui"></div>
-        <div class="row" style="margin-top: 20px; border-top: 1px solid var(--border-color); padding-top: 20px;">
+        <div class="row" style="margin-top: 15px; border-top: 1px solid var(--border-color); padding-top: 15px;">
             <label id="lbl-result" for="valOut">Result:</label>
-            <input type="text" id="valOut" class="input-field res-field" readonly aria-label="Result field">
+            <input type="text" id="valOut" class="input-field res-field" readonly>
         </div>
     </section>
 
-    <article class="seo-content" id="seo-box"></article>
+    <div class="seo-content" id="seo-box"></div>
 
-    <section class="tools-network">
+    <div class="tools-network">
         <h4 id="txt-other-tools">Other Elite Tools</h4>
         <div class="tools-grid">
-            <a href="https://smart-converter.github.io/unit-converter/" class="tool-link-btn" id="lnk-unit">Unit Converter</a>
-            <a href="https://smart-converter.github.io/currency-converter/" class="tool-link-btn" id="lnk-cur">Currency</a>
-            <a href="https://smart-converter.github.io/vat-calculator/" class="tool-link-btn" id="lnk-vat">VAT Calc</a>
-            <a href="https://smart-converter.github.io/loan-calculator/" class="tool-link-btn" id="lnk-loan">Loans</a>
-            <a href="https://smart-converter.github.io/discount-calculator/" class="tool-link-btn" id="lnk-disc">Discounts</a>
-            <a href="https://smart-converter.github.io/tip-calculator/" class="tool-link-btn" id="lnk-tip">Tips</a>
-            <a href="https://smart-converter.github.io/bmi-calculator/" class="tool-link-btn" id="lnk-bmi">BMI</a>
+            <a href="https://smart-converter.github.io/unit-converter/" class="tool-link-btn">Unit Converter</a>
+            <a href="https://smart-converter.github.io/currency-converter/" class="tool-link-btn">Currency</a>
+            <a href="https://smart-converter.github.io/vat-calculator/" class="tool-link-btn">VAT Calc</a>
+            <a href="https://smart-converter.github.io/loan-calculator/" class="tool-link-btn">Loans</a>
+            <a href="https://smart-converter.github.io/discount-calculator/" class="tool-link-btn">Discounts</a>
+            <a href="https://smart-converter.github.io/tip-calculator/" class="tool-link-btn">Tips</a>
+            <a href="https://smart-converter.github.io/bmi-calculator/" class="tool-link-btn">BMI Calc</a>
         </div>
-    </section>
+    </div>
 </main>
 
 <footer>
     <div class="footer-info-block" id="footer-full-text"></div>
     <p>© 2026 SmartPercentage.io - Precise Financial Tools</p>
-    <nav aria-label="Footer navigation">
-        <span class="footer-link" onclick="openPol('privacy')" id="link-privacy">Privacy Policy</span>
-        <span class="footer-link" onclick="openPol('terms')" id="link-terms">Terms of Use</span>
-    </nav>
+    <div>
+        <span class="footer-link" onclick="openPol('privacy')" id="link-privacy">Privacy</span>
+        <span class="footer-link" onclick="openPol('terms')" id="link-terms">Terms</span>
+    </div>
 </footer>
 
-<div id="siteModal" class="modal" role="dialog" aria-modal="true" onclick="if(event.target == this) closeModal()">
-    <div class="modal-content">
-        <span class="close-btn" onclick="closeModal()" aria-label="Close modal">×</span>
-        <div id="modalBody"></div>
-    </div>
+<div id="siteModal" class="modal" onclick="if(event.target == this) closeModal()">
+    <div class="modal-content"><span class="close-btn" onclick="closeModal()">×</span><div id="modalBody"></div></div>
 </div>
 
 <script>
@@ -162,42 +159,20 @@
         en: {
             res: "Result:", other: "Other Elite Tools", cats: ["Basic %", "Difference", "Increase"],
             l1: "Percentage %", l2: "Of Number", l3: "Initial Value", l4: "Final Value", l5: "Value",
-            unit: "Unit Converter", cur: "Currency", vat: "VAT Calc", loan: "Loans", disc: "Discounts", tip: "Tips", bmi: "BMI",
-            footer: "SmartPercentage.io is your go-to destination for high-precision percentage calculations. Whether you are a business professional calculating profit margins or a student working on math problems, our tool provides instant, reliable results. We use advanced algorithms to ensure that every calculation, from simple percentages to complex growth increases, is 100% accurate and mathematically sound.",
-            seo: `<h2>Why Use Our Percentage Calculator?</h2><p>In finance, shopping, and data analysis, percentages are everywhere. <strong>SmartPercentage.io</strong> simplifies these tasks. Our tool supports three main modes: finding a percentage of a number, calculating the percentage difference between two values, and adding a percentage increase to a base value.</p><h2>Perfect for Business and Daily Life</h2><p>Need to calculate a 15% tip? Or a 20% increase in annual revenue? Our professional interface is optimized for both mobile and desktop, ensuring you get the answers you need in seconds.</p>`,
+            footer: "SmartPercentage.io is your go-to destination for high-precision percentage calculations. We use advanced algorithms to ensure 100% accuracy for business and students.",
+            seo: `<h2>Why Use Our Calculator?</h2><p>Our tool supports three main modes: finding a percentage of a number, calculating differences, and adding increases.</p>`,
             privacy: "Privacy Policy", terms: "Terms of Use",
-            privText: "<h2>Privacy Policy</h2><p>Your privacy is our priority. SmartPercentage.io does not store any numerical data you enter. All calculations are performed instantly in your browser.</p>",
-            termsText: "<h2>Terms of Use</h2><p>Our tools are provided for informational purposes. While we strive for absolute mathematical precision, we recommend verifying critical financial figures with official banking documents.</p>"
+            privText: "<h2>Privacy</h2><p>We do not store any data. Calculations are local.</p>",
+            termsText: "<h2>Terms</h2><p>For informational purposes only.</p>"
         },
         uk: {
             res: "Результат:", other: "Інші професійні інструменти", cats: ["Базовий %", "Різниця", "Приріст"],
             l1: "Відсоток %", l2: "Від числа", l3: "Початкове", l4: "Кінцеве", l5: "Значення",
-            unit: "Конвертер", cur: "Валюти", vat: "ПДВ", loan: "Кредити", disc: "Знижки", tip: "Чайові", bmi: "Індекс маси",
-            footer: "SmartPercentage.io — це ваш надійний помічник для високоточних розрахунків відсотків. Незалежно від того, чи ви професійний фінансист, чи студент, наш інструмент забезпечує миттєві та надійні результати. Ми використовуємо сучасні алгоритми, щоб гарантувати 100% точність кожного обчислення: від простих часток до складних відсоткових різниць та приростів.",
-            seo: `<h2>Навіщо потрібен наш калькулятор відсотків?</h2><p>У фінансах, покупках та аналізі даних відсотки зустрічаються скрізь. <strong>SmartPercentage.io</strong> спрощує ці завдання. Наш інструмент підтримує три основні режими: знаходження відсотка від числа, розрахунок відсоткової різниці між двома значеннями та додавання відсоткового приросту.</p><h2>Ідеально для бізнесу та побуту</h2><p>Потрібно порахувати 15% чайових? Або 20% приросту річного доходу? Наш інтерфейс оптимізований для мобільних пристроїв та десктопів, щоб ви отримували відповіді за секунди.</p>`,
+            footer: "SmartPercentage.io — це ваш надійний помічник для високоточних розрахунків відсотків. Ми використовуємо сучасні алгоритми для 100% точності.",
+            seo: `<h2>Навіщо потрібен наш калькулятор?</h2><p>Наш інструмент підтримує три основні режими: знаходження відсотка, розрахунок різниці та приросту.</p>`,
             privacy: "Конфіденційність", terms: "Умови",
-            privText: "<h2>Політика конфіденційності</h2><p>Ваша конфіденційність — наш пріоритет. Ми не зберігаємо ваші дані. Усі розрахунки відбуваються прямо у вашому браузері.</p>",
-            termsText: "<h2>Умови використання</h2><p>Інструменти надаються для інформаційних цілей. Ми рекомендуємо перевіряти критичні фінансові дані в офіційних джерелах.</p>"
-        },
-        es: {
-            res: "Resultado:", other: "Otras herramientas", cats: ["Básico %", "Diferencia", "Aumento"],
-            l1: "Porcentaje %", l2: "Del número", l3: "Valor inicial", l4: "Valor final", l5: "Valor",
-            unit: "Convertidor", cur: "Moneda", vat: "IVA", loan: "Préstamos", disc: "Descuento", tip: "Propina", bmi: "IMC",
-            footer: "SmartPercentage.io es su destino preferido para cálculos de porcentaje de alta precisión. Ya sea un profesional de negocios que calcula márgenes de beneficio o un estudiante, nuestra herramienta ofrece resultados instantáneos. Actualizamos nuestros algoritmos matemáticos regularmente para garantizar que cada cálculo de crecimiento sea 100% preciso.",
-            seo: `<h2>¿Por qué utilizar nuestra calculadora de porcentajes?</h2><p>En las finanzas, las compras y el análisis de datos, los porcentajes están en todas partes. <strong>SmartPercentage.io</strong> simplifica estas tareas. Nuestra herramienta admite tres modos: encontrar el porcentaje de un número, calcular la diferencia y añadir aumentos.</p><h2>Perfecto para el uso diario</h2><p>Calcula propinas, descuentos comerciales o crecimientos anuales en segundos con nuestra interfaz optimizada para móviles.</p>`,
-            privacy: "Privacidad", terms: "Términos",
-            privText: "<h2>Política de Privacidad</h2><p>Su privacidad es nuestra prioridad. No almacenamos datos. Los cálculos se realizan localmente en su navegador.</p>",
-            termsText: "<h2>Términos de Uso</h2><p>Nuestras herramientas se proporcionan solo con fines informativos. Verifique los datos financieros críticos.</p>"
-        },
-        de: {
-            res: "Ergebnis:", other: "Andere Werkzeuge", cats: ["Basis %", "Differenz", "Zunahme"],
-            l1: "Prozent %", l2: "Von Zahl", l3: "Initialwert", l4: "Endwert", l5: "Wert",
-            unit: "Konverter", cur: "Währung", vat: "MwSt", loan: "Kredit", disc: "Rabatt", tip: "Trinkgeld", bmi: "BMI",
-            footer: "SmartPercentage.io ist Ihre Anlaufstelle für hochpräzise Prozentrechnungen. Ob Sie als Geschäftsmann Gewinnmargen berechnen oder als Student an Matheaufgaben arbeiten, unser Tool liefert sofortige Ergebnisse. Wir verwenden fortschrittliche Algorithmen, um sicherzustellen, dass jede Berechnung zu 100% mathematisch korrekt ist.",
-            seo: `<h2>Warum unseren Prozentrechner nutzen?</h2><p>In Finanzen und Datenanalysen sind Prozentsätze allgegenwärtig. <strong>SmartPercentage.io</strong> vereinfacht diese Aufgaben. Unser Tool unterstützt die Berechnung von Anteilen, Differenzen und prozentualen Steigerungen.</p><h2>Ideal für Business und Alltag</h2><p>Berechnen Sie Trinkgelder, Rabatte oder Umsatzsteigerungen in Sekunden mit unserem professionellen Interface.</p>`,
-            privacy: "Datenschutz", terms: "AGB",
-            privText: "<h2>Datenschutzrichtlinie</h2><p>Ihre Privatsphäre ist uns wichtig. Wir speichern keine Daten. Alle Berechnungen erfolgen lokal in Ihrem Browser.</p>",
-            termsText: "<h2>Nutzungsbedingungen</h2><p>Unsere Tools dienen nur zu Informationszwecken. Bitte überprüfen Sie wichtige Finanzdaten offiziell.</p>"
+            privText: "<h2>Конфіденційність</h2><p>Ми не зберігаємо дані. Розрахунки локальні.</p>",
+            termsText: "<h2>Умови</h2><p>Тільки для інформаційних цілей.</p>"
         }
     };
 
@@ -219,15 +194,6 @@
         document.getElementById('link-privacy').innerText = l.privacy;
         document.getElementById('link-terms').innerText = l.terms;
         document.getElementById('seo-box').innerHTML = l.seo;
-        
-        document.getElementById('lnk-unit').innerText = l.unit;
-        document.getElementById('lnk-cur').innerText = l.cur;
-        document.getElementById('lnk-vat').innerText = l.vat;
-        document.getElementById('lnk-loan').innerText = l.loan;
-        document.getElementById('lnk-disc').innerText = l.disc;
-        document.getElementById('lnk-tip').innerText = l.tip;
-        document.getElementById('lnk-bmi').innerText = l.bmi;
-        
         initTabs();
     }
 
@@ -249,14 +215,14 @@
         const container = document.getElementById('calc-ui');
         let html = '';
         if (currentTab === 0) {
-            html = `<div class="row"><label for="v1">${l.l1}:</label><input type="number" id="v1" class="input-field" value="10" oninput="calc()" aria-label="Percent amount"></div>
-                    <div class="row"><label for="v2">${l.l2}:</label><input type="number" id="v2" class="input-field" value="100" oninput="calc()" aria-label="Base number"></div>`;
+            html = `<div class="row"><label>${l.l1}:</label><input type="number" id="v1" class="input-field" value="10" oninput="calc()"></div>
+                    <div class="row"><label>${l.l2}:</label><input type="number" id="v2" class="input-field" value="100" oninput="calc()"></div>`;
         } else if (currentTab === 1) {
-            html = `<div class="row"><label for="v1">${l.l3}:</label><input type="number" id="v1" class="input-field" value="100" oninput="calc()" aria-label="Initial value for difference"></div>
-                    <div class="row"><label for="v2">${l.l4}:</label><input type="number" id="v2" class="input-field" value="125" oninput="calc()" aria-label="Final value for difference"></div>`;
+            html = `<div class="row"><label>${l.l3}:</label><input type="number" id="v1" class="input-field" value="100" oninput="calc()"></div>
+                    <div class="row"><label>${l.l4}:</label><input type="number" id="v2" class="input-field" value="125" oninput="calc()"></div>`;
         } else {
-            html = `<div class="row"><label for="v1">${l.l5}:</label><input type="number" id="v1" class="input-field" value="100" oninput="calc()" aria-label="Value to increase"></div>
-                    <div class="row"><label for="v2">${l.l1} (+):</label><input type="number" id="v2" class="input-field" value="20" oninput="calc()" aria-label="Percent to add"></div>`;
+            html = `<div class="row"><label>${l.l5}:</label><input type="number" id="v1" class="input-field" value="100" oninput="calc()"></div>
+                    <div class="row"><label>${l.l1} (+):</label><input type="number" id="v2" class="input-field" value="20" oninput="calc()"></div>`;
         }
         container.innerHTML = html;
         calc();
@@ -270,7 +236,6 @@
         if (currentTab === 0) res = a * (b / 100);
         else if (currentTab === 1) res = a !== 0 ? ((b - a) / a) * 100 : 0;
         else res = a + (a * (b / 100));
-        
         out.value = currentTab === 1 ? res.toFixed(2) + "%" : res.toLocaleString(undefined, {maximumFractionDigits: 2});
     }
 
