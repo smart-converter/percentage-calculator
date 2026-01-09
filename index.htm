@@ -2,49 +2,48 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Percentage Calculator Pro - Fast & Accurate Online Tool</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Percentage Calculator Pro - Fast & Accurate</title>
     <style>
         :root {
             --bg-dark: #0f172a;
             --card-bg: #1e293b;
             --accent-green: #22c55e;
             --text-light: #f8fafc;
-            --text-muted: #94a3b8; /* Зробив трохи м'якшим як у Unit */
+            --text-muted: #94a3b8;
             --border-color: #334155;
-            --border-glow: rgba(255, 255, 255, 0.1);
         }
 
         body { font-family: -apple-system, system-ui, sans-serif; margin: 0; padding: 0; background-color: var(--bg-dark); color: var(--text-light); -webkit-font-smoothing: antialiased; }
         
-        .top-header { background-color: #166534; padding: 12px 15px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border-color); }
+        .top-header { background-color: #166534; padding: 0 15px; height: 50px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border-color); }
         .top-header h1 { margin: 0; font-size: 18px; font-weight: 900; color: white; }
-        .lang-switcher { background: transparent; border: 1px solid white; color: white; padding: 3px 7px; border-radius: 6px; font-size: 13px; cursor: pointer; font-weight: 700; }
+        .lang-switcher { background: transparent; border: 1px solid white; color: white; padding: 2px 6px; border-radius: 6px; font-size: 13px; cursor: pointer; font-weight: 700; outline: none; }
+        .lang-switcher option { color: #333; }
         
-        .container { max-width: 600px; margin: 0 auto; padding: 10px; box-sizing: border-box; min-height: 100vh; }
+        .container { max-width: 600px; margin: 0 auto; padding: 10px; box-sizing: border-box; }
         
         .tabs-grid { 
             display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; 
             background-color: #14532d; border: 1px solid #14532d; 
             margin: 10px 0; border-radius: 8px; overflow: hidden;
         }
-        .tab { background: #166534; color: #fff; height: 44px; text-align: center; cursor: pointer; font-size: 11px; font-weight: 800; text-transform: uppercase; display: flex; align-items: center; justify-content: center; border: none; }
+        .tab { background: #166534; color: #fff; height: 44px; text-align: center; cursor: pointer; font-size: 10px; font-weight: 800; text-transform: uppercase; display: flex; align-items: center; justify-content: center; border: none; }
         .tab.active { background: #fff; color: #166534; }
         
         .ad-space { 
-            background: rgba(255, 255, 255, 0.03); border: 1px dashed var(--border-color); 
+            background: rgba(255, 255, 255, 0.02); border: 1px dashed var(--border-color); 
             margin: 10px 0; text-align: center; color: var(--text-muted); 
             font-size: 10px; height: 90px; display: flex; align-items: center; justify-content: center; border-radius: 8px; 
         }
         
         .converter-box { border: 1px solid var(--border-color); padding: 20px; background: var(--card-bg); border-radius: 12px; }
-        .row { display: flex; align-items: center; margin-bottom: 12px; }
+        .row { display: flex; align-items: center; margin-bottom: 15px; }
         .row label { width: 120px; font-size: 14px; color: var(--text-muted); font-weight: 600; }
         
-        /* ТУТ ВИПРАВЛЕНО НА СТИЛЬ UNIT */
         .input-field { 
             flex: 1; padding: 10px; border: 1px solid var(--border-color); border-radius: 8px; 
-            font-size: 17px; font-weight: 700; background: #0f172a; color: #fff; outline: none; width: 100%; box-sizing: border-box; 
+            font-size: 18px; font-weight: 700; background: #0f172a; color: #fff; outline: none; width: 100%; box-sizing: border-box; 
         }
         .res-field { color: var(--accent-green) !important; border-color: var(--accent-green) !important; background: rgba(34, 197, 94, 0.05) !important; }
 
@@ -54,18 +53,16 @@
         .tools-network { padding: 20px 0; text-align: center; border-top: 1px solid var(--border-color); margin-top: 10px; }
         .tools-network h4 { margin: 0 0 15px 0; color: var(--text-muted); font-size: 11px; text-transform: uppercase; letter-spacing: 1px; }
         
-        /* ОБМЕЖЕННЯ ШИРИНИ СІТКИ ЯК У UNIT */
         .tools-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; max-width: 400px; margin: 0 auto; }
         .tool-link-btn { padding: 10px 5px; border: 1px solid var(--accent-green); color: var(--accent-green); text-decoration: none; border-radius: 8px; font-size: 11px; font-weight: 800; display: flex; align-items: center; justify-content: center; height: 40px; box-sizing: border-box; }
         .tool-link-btn:last-child:nth-child(odd) { grid-column: 1 / span 2; justify-self: center; width: calc(50% - 4px); }
 
-        footer { border-top: 1px solid var(--border-color); padding: 25px 15px; text-align: center; }
-        /* КОМПАКТНИЙ ТЕКСТОВИЙ БЛОК */
-        .footer-info-block { border: 1px solid var(--border-color); border-radius: 12px; padding: 15px; margin: 0 auto 20px auto; background: rgba(255, 255, 255, 0.02); text-align: left; max-width: 500px; font-size: 12px; line-height: 1.5; color: var(--text-muted); }
+        footer { border-top: 1px solid var(--border-color); padding: 30px 15px; text-align: center; }
+        .footer-info-block { border: 1px solid var(--border-color); border-radius: 12px; padding: 20px; margin: 0 auto 20px auto; background: rgba(255, 255, 255, 0.02); text-align: left; max-width: 500px; font-size: 13px; line-height: 1.6; color: var(--text-muted); }
         .footer-link { color: var(--accent-green); text-decoration: none; cursor: pointer; padding: 0 10px; font-weight: 700; font-size: 12px; }
         
         .modal { display: none; position: fixed; z-index: 10000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); overflow-y: auto; }
-        .modal-content { background: var(--card-bg); margin: 10% auto; padding: 25px; width: 85%; max-width: 500px; border-radius: 12px; position: relative; border: 1px solid var(--border-color); color: white; }
+        .modal-content { background: var(--card-bg); margin: 10% auto; padding: 25px; width: 85%; max-width: 500px; border-radius: 12px; position: relative; border: 1px solid var(--border-color); color: white; line-height: 1.6; }
         .close-btn { position: absolute; right: 10px; top: 0; font-size: 32px; cursor: pointer; color: var(--text-muted); }
     </style>
 </head>
@@ -88,7 +85,7 @@
     <div class="converter-box">
         <div id="calc-ui"></div>
         <div class="row" style="margin-top: 15px; border-top: 1px solid var(--border-color); padding-top: 15px;">
-            <label id="lbl-result" for="valOut">Result:</label>
+            <label id="lbl-result">Result:</label>
             <input type="text" id="valOut" class="input-field res-field" readonly>
         </div>
     </div>
@@ -99,12 +96,12 @@
         <h4 id="txt-other-tools">Other Elite Tools</h4>
         <div class="tools-grid">
             <a href="https://smart-converter.github.io/unit-converter/" class="tool-link-btn" id="lnk-unit">Unit Converter</a>
-            <a href="https://smart-converter.github.io/currency-converter/" class="tool-link-btn" id="lnk-cur">Currency Converter</a>
-            <a href="https://smart-converter.github.io/vat-calculator/" class="tool-link-btn" id="lnk-vat">VAT Calculator</a>
-            <a href="https://smart-converter.github.io/loan-calculator/" class="tool-link-btn" id="lnk-loan">Loan Calculator</a>
-            <a href="https://smart-converter.github.io/discount-calculator/" class="tool-link-btn" id="lnk-disc">Discount Calc</a>
-            <a href="https://smart-converter.github.io/tip-calculator/" class="tool-link-btn" id="lnk-tip">Tip Calculator</a>
-            <a href="https://smart-converter.github.io/bmi-calculator/" class="tool-link-btn" id="lnk-bmi">BMI Calculator</a>
+            <a href="https://smart-converter.github.io/currency-converter/" class="tool-link-btn" id="lnk-cur">Currency</a>
+            <a href="https://smart-converter.github.io/vat-calculator/" class="tool-link-btn" id="lnk-vat">VAT Calc</a>
+            <a href="https://smart-converter.github.io/loan-calculator/" class="tool-link-btn" id="lnk-loan">Loans</a>
+            <a href="https://smart-converter.github.io/discount-calculator/" class="tool-link-btn" id="lnk-disc">Discounts</a>
+            <a href="https://smart-converter.github.io/tip-calculator/" class="tool-link-btn" id="lnk-tip">Tips</a>
+            <a href="https://smart-converter.github.io/bmi-calculator/" class="tool-link-btn" id="lnk-bmi">BMI Calc</a>
         </div>
     </div>
 </div>
@@ -127,33 +124,49 @@
         en: {
             res: "Result:", other: "Other Elite Tools", cats: ["Basic %", "Difference", "Increase"],
             l1: "Percentage %", l2: "Of Number", l3: "Initial Value", l4: "Final Value", l5: "Value",
-            unit: "Unit Converter", cur: "Currency Converter", vat: "VAT Calculator", loan: "Loan Calculator", disc: "Discount Calc", tip: "Tip Calculator", bmi: "BMI Calculator",
-            footer: "SmartPercentage.io is your go-to destination for high-precision percentage calculations. We use advanced algorithms to ensure that every calculation is 100% accurate.",
-            seo: `<h2>Why Use Our Calculator?</h2><p>Our tool supports three main modes: finding a percentage of a number, calculating differences, and adding increases.</p>`,
+            unit: "Unit Converter", cur: "Currency", vat: "VAT Calc", loan: "Loans", disc: "Discounts", tip: "Tips", bmi: "BMI Calc",
+            footer: "SmartPercentage.io is your go-to destination for high-precision percentage calculations. Whether you are a business professional calculating profit margins or a student working on math problems, our tool provides instant, reliable results. We use advanced algorithms to ensure 100% accuracy.",
+            seo: `<h2>Why Use Our Percentage Calculator?</h2><p>In finance and data analysis, percentages are everywhere. Our tool supports three modes: finding a percentage of a number, calculating differences, and growth increases.</p>`,
             privacy: "Privacy Policy", terms: "Terms of Use",
-            privText: "<h2>Privacy Policy</h2><p>We do not store any data. All calculations are performed instantly in your browser.</p>",
-            termsText: "<h2>Terms of Use</h2><p>Our tools are for informational purposes. Verify results for critical tasks.</p>"
+            privText: "<h2>Privacy Policy</h2><p>Calculations are performed locally in your browser. No data is stored.</p>",
+            termsText: "<h2>Terms of Use</h2><p>For informational purposes only. Please verify important calculations.</p>"
         },
         uk: {
-            res: "Результат:", other: "Інші інструменти", cats: ["Базовий %", "Різниця", "Приріст"],
+            res: "Результат:", other: "Інші професійні інструменти", cats: ["Базовий %", "Різниця", "Приріст"],
             l1: "Відсоток %", l2: "Від числа", l3: "Початкове", l4: "Кінцеве", l5: "Значення",
             unit: "Конвертер", cur: "Валюти", vat: "ПДВ", loan: "Кредити", disc: "Знижки", tip: "Чайові", bmi: "Індекс маси",
-            footer: "SmartPercentage.io — ваш надійний помічник для розрахунків відсотків. Ми гарантуємо точність кожного обчислення.",
-            seo: `<h2>Навіщо потрібен наш калькулятор?</h2><p>Інструмент підтримує три режими: знаходження відсотка, різниці та приросту.</p>`,
+            footer: "SmartPercentage.io — це ваш надійний помічник для високоточних розрахунків відсотків. Незалежно від того, чи ви професійний фінансист, чи студент, наш інструмент забезпечує миттєві результати. Ми гарантуємо 100% точність кожного обчислення.",
+            seo: `<h2>Навіщо потрібен наш калькулятор?</h2><p>У фінансах та аналізі даних відсотки зустрічаються скрізь. Наш інструмент підтримує знаходження відсотка, різниці та приросту.</p>`,
             privacy: "Конфіденційність", terms: "Умови",
-            privText: "<h2>Конфіденційність</h2><p>Ми не зберігаємо ваші дані. Розрахунки локальні.</p>",
-            termsText: "<h2>Умови використання</h2><p>Інструменти надаються для інформаційних цілей.</p>"
+            privText: "<h2>Політика конфіденційності</h2><p>Розрахунки відбуваються прямо у вашому браузері. Ми не зберігаємо ваші дані.</p>",
+            termsText: "<h2>Умови використання</h2><p>Тільки для інформаційних цілей. Перевіряйте важливі цифри.</p>"
+        },
+        es: {
+            res: "Resultado:", other: "Otras herramientas", cats: ["Básico %", "Diferencia", "Aumento"],
+            l1: "Porcentaje %", l2: "Del número", l3: "Valor inicial", l4: "Valor final", l5: "Valor",
+            unit: "Convertidor", cur: "Moneda", vat: "IVA", loan: "Préstamos", disc: "Descuento", tip: "Propina", bmi: "IMC",
+            footer: "SmartPercentage.io es su destino para cálculos de precisión. Ya sea para negocios o estudios, nuestra herramienta ofrece resultados instantáneos y 100% exactos.",
+            seo: `<h2>¿Por qué usar nuestra calculadora?</h2><p>Admite tres modos principales para finanzas, compras y análisis de datos.</p>`,
+            privacy: "Privacidad", terms: "Términos",
+            privText: "<h2>Privacidad</h2><p>No almacenamos datos. Todo es local.</p>",
+            termsText: "<h2>Términos</h2><p>Uso informativo. Verifique los datos.</p>"
+        },
+        de: {
+            res: "Ergebnis:", other: "Andere Werkzeuge", cats: ["Basis %", "Differenz", "Zunahme"],
+            l1: "Prozent %", l2: "Von Zahl", l3: "Startwert", l4: "Endwert", l5: "Wert",
+            unit: "Konverter", cur: "Währung", vat: "MwSt", loan: "Kredit", disc: "Rabatt", tip: "Trinkgeld", bmi: "BMI",
+            footer: "SmartPercentage.io bietet hochpräzise Prozentrechnungen. Ideal für Business und Bildung, mit 100% mathematischer Genauigkeit.",
+            seo: `<h2>Warum unseren Rechner nutzen?</h2><p>Drei Modi für alle täglichen und geschäftlichen Berechnungen.</p>`,
+            privacy: "Datenschutz", terms: "AGB",
+            privText: "<h2>Datenschutz</h2><p>Keine Datenspeicherung. Lokal im Browser.</p>",
+            termsText: "<h2>AGB</h2><p>Nur zu Informationszwecken.</p>"
         }
     };
 
     let curLang = localStorage.getItem('lang_perc') || 'en';
     let currentTab = 0;
 
-    function changeLang(lang) { 
-        curLang = lang; 
-        localStorage.setItem('lang_perc', lang); 
-        updateUI(); 
-    }
+    function changeLang(lang) { curLang = lang; localStorage.setItem('lang_perc', lang); updateUI(); }
 
     function updateUI() {
         const l = translations[curLang] || translations.en;
@@ -164,7 +177,6 @@
         document.getElementById('link-privacy').innerText = l.privacy;
         document.getElementById('link-terms').innerText = l.terms;
         document.getElementById('seo-box').innerHTML = l.seo;
-        
         document.getElementById('lnk-unit').innerText = l.unit;
         document.getElementById('lnk-cur').innerText = l.cur;
         document.getElementById('lnk-vat').innerText = l.vat;
@@ -172,7 +184,6 @@
         document.getElementById('lnk-disc').innerText = l.disc;
         document.getElementById('lnk-tip').innerText = l.tip;
         document.getElementById('lnk-bmi').innerText = l.bmi;
-        
         initTabs();
     }
 
@@ -194,14 +205,14 @@
         const container = document.getElementById('calc-ui');
         let html = '';
         if (currentTab === 0) {
-            html = `<div class="row"><label for="v1">${l.l1}:</label><input type="number" id="v1" class="input-field" value="10" oninput="calc()"></div>
-                    <div class="row"><label for="v2">${l.l2}:</label><input type="number" id="v2" class="input-field" value="100" oninput="calc()"></div>`;
+            html = `<div class="row"><label>${l.l1}:</label><input type="number" id="v1" class="input-field" value="10" oninput="calc()"></div>
+                    <div class="row"><label>${l.l2}:</label><input type="number" id="v2" class="input-field" value="100" oninput="calc()"></div>`;
         } else if (currentTab === 1) {
-            html = `<div class="row"><label for="v1">${l.l3}:</label><input type="number" id="v1" class="input-field" value="100" oninput="calc()"></div>
-                    <div class="row"><label for="v2">${l.l4}:</label><input type="number" id="v2" class="input-field" value="125" oninput="calc()"></div>`;
+            html = `<div class="row"><label>${l.l3}:</label><input type="number" id="v1" class="input-field" value="100" oninput="calc()"></div>
+                    <div class="row"><label>${l.l4}:</label><input type="number" id="v2" class="input-field" value="125" oninput="calc()"></div>`;
         } else {
-            html = `<div class="row"><label for="v1">${l.l5}:</label><input type="number" id="v1" class="input-field" value="100" oninput="calc()"></div>
-                    <div class="row"><label for="v2">${l.l1} (+):</label><input type="number" id="v2" class="input-field" value="20" oninput="calc()"></div>`;
+            html = `<div class="row"><label>${l.l5}:</label><input type="number" id="v1" class="input-field" value="100" oninput="calc()"></div>
+                    <div class="row"><label>${l.l1} (+):</label><input type="number" id="v2" class="input-field" value="20" oninput="calc()"></div>`;
         }
         container.innerHTML = html;
         calc();
@@ -211,11 +222,7 @@
         const a = parseFloat(document.getElementById('v1').value) || 0;
         const b = parseFloat(document.getElementById('v2').value) || 0;
         const out = document.getElementById('valOut');
-        let res = 0;
-        if (currentTab === 0) res = a * (b / 100);
-        else if (currentTab === 1) res = a !== 0 ? ((b - a) / a) * 100 : 0;
-        else res = a + (a * (b / 100));
-        
+        let res = (currentTab === 0) ? a * (b / 100) : (currentTab === 1) ? (a !== 0 ? ((b - a) / a) * 100 : 0) : a + (a * (b / 100));
         out.value = currentTab === 1 ? res.toFixed(2) + "%" : res.toLocaleString(undefined, {maximumFractionDigits: 2});
     }
 
@@ -230,4 +237,3 @@
 </script>
 </body>
 </html>
-
