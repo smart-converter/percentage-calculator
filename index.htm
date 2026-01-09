@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Percentage Calculator Pro</title>
+    <title>Percentage Calculator Pro - Fast & Accurate</title>
     <style>
         :root {
             --bg-dark: #0f172a;
@@ -19,11 +19,10 @@
         .top-header { background-color: #166534; padding: 0 15px; height: 60px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border-color); }
         .top-header h1 { margin: 0; font-size: 18px; font-weight: 900; color: white; }
         
-        /* ЗБІЛЬШЕНИЙ ПЕРЕМИКАЧ МОВ */
         .lang-switcher { 
             background: transparent; border: 1px solid white; color: white; 
-            padding: 5px 10px; border-radius: 6px; font-size: 15px; /* Більший шрифт */
-            cursor: pointer; font-weight: 700; outline: none; appearance: none;
+            padding: 5px 10px; border-radius: 6px; font-size: 15px; 
+            cursor: pointer; font-weight: 700; outline: none;
         }
         .lang-switcher option { color: #333; background: #fff; }
         
@@ -56,20 +55,17 @@
         .footer-info-block { border: 1px solid var(--border-color); border-radius: 12px; padding: 20px; margin: 0 auto 20px auto; background: rgba(255, 255, 255, 0.02); text-align: left; max-width: 500px; font-size: 13px; line-height: 1.6; color: var(--text-muted); }
         .footer-link { color: var(--accent-green); text-decoration: none; cursor: pointer; padding: 0 10px; font-weight: 700; font-size: 13px; }
         
-        /* ПОКРАЩЕНА МОДАЛКА ТА КНОПКА "Х" */
         .modal { display: none; position: fixed; z-index: 10000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); overflow-y: auto; }
         .modal-content { 
-            background: var(--card-bg); margin: 15% auto; padding: 30px 20px 20px; 
+            background: var(--card-bg); margin: 15% auto; padding: 35px 20px 20px; 
             width: 88%; max-width: 500px; border-radius: 12px; position: relative; 
             border: 1px solid var(--border-color); color: white; line-height: 1.6; box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
         .close-btn { 
             position: absolute; right: 5px; top: 5px; 
-            font-size: 36px; /* Збільшено */
-            font-weight: 300; line-height: 1;
+            font-size: 40px; font-weight: 300; line-height: 1;
             cursor: pointer; color: var(--text-muted); 
-            padding: 10px 15px; /* Збільшена зона кліку */
-            display: block;
+            padding: 10px 20px; display: block;
         }
     </style>
 </head>
@@ -135,41 +131,41 @@
             res: "Result:", other: "Other Elite Tools", cats: ["Basic %", "Difference", "Increase"],
             l1: "Percentage %", l2: "Of Number", l3: "Initial Value", l4: "Final Value", l5: "Value",
             unit: "Unit Converter", cur: "Currency", vat: "VAT Calc", loan: "Loans", disc: "Discounts", tip: "Tips", bmi: "BMI Calc",
-            footer: "SmartPercentage.io is your go-to destination for high-precision percentage calculations. We use advanced algorithms to ensure 100% accuracy for business and education.",
-            seo: `<h2>Why Use Our Calculator?</h2><p>Our tool supports three modes: finding a percentage of a number, calculating differences, and growth increases.</p>`,
+            footer: "SmartPercentage.io is your go-to destination for high-precision percentage calculations. Whether you are a business professional calculating profit margins or a student working on math problems, our tool provides instant, reliable results. We use advanced algorithms to ensure 100% accuracy for business and students.",
+            seo: `<h2>Why Use Our Percentage Calculator?</h2><p>In finance, shopping, and data analysis, percentages are everywhere. SmartPercentage.io simplifies these tasks. Our tool supports three main modes: finding a percentage of a number, calculating the percentage difference between two values, and adding a percentage increase to a base value.</p><h2>Perfect for Business and Daily Life</h2><p>Need to calculate a 15% tip? Or a 20% increase in annual revenue? Our professional interface is optimized for both mobile and desktop, ensuring you get the answers you need in seconds.</p>`,
             privacy: "Privacy Policy", terms: "Terms of Use",
-            privText: "<h2>Privacy Policy</h2><p>We do not store any data. Calculations are local in your browser.</p>",
-            termsText: "<h2>Terms of Use</h2><p>Information provided is for reference. Verify important financial data.</p>"
+            privText: "<h2>Privacy Policy</h2><p>Your privacy is our priority. SmartPercentage.io does not store any numerical data you enter. All calculations are performed instantly in your browser.</p>",
+            termsText: "<h2>Terms of Use</h2><p>Our tools are provided for informational purposes. While we strive for absolute mathematical precision, we recommend verifying critical financial figures with official sources.</p>"
         },
         uk: {
             res: "Результат:", other: "Інші професійні інструменти", cats: ["Базовий %", "Різниця", "Приріст"],
             l1: "Відсоток %", l2: "Від числа", l3: "Початкове", l4: "Кінцеве", l5: "Значення",
             unit: "Конвертер", cur: "Валюти", vat: "ПДВ", loan: "Кредити", disc: "Знижки", tip: "Чайові", bmi: "Індекс маси",
-            footer: "SmartPercentage.io — ваш надійний помічник для високоточних розрахунків. Ми гарантуємо 100% точність кожного обчислення для бізнесу та навчання.",
-            seo: `<h2>Навіщо потрібен наш калькулятор?</h2><p>Інструмент підтримує три режими: знаходження відсотка, різниці та приросту.</p>`,
+            footer: "SmartPercentage.io — це ваш надійний помічник для високоточних розрахунків відсотків. Незалежно від того, чи ви професійний фінансист, чи студент, наш інструмент забезпечує миттєві та надійні результати. Ми використовуємо сучасні алгоритми, щоб гарантувати 100% точність кожного обчислення.",
+            seo: `<h2>Навіщо потрібен наш калькулятор відсотків?</h2><p>У фінансах, покупках та аналізі даних відсотки зустрічаються скрізь. SmartPercentage.io спрощує ці завдання. Наш інструмент підтримує три основні режими: знаходження відсотка від числа, розрахунок відсоткової різниці та приросту.</p><h2>Ідеально для бізнесу та побуту</h2><p>Потрібно порахувати 15% чайових? Або 20% приросту доходу? Наш інтерфейс оптимізований для мобільних пристроїв, щоб ви отримували відповіді за секунди.</p>`,
             privacy: "Конфіденційність", terms: "Умови",
-            privText: "<h2>Конфіденційність</h2><p>Ми не зберігаємо ваші дані. Розрахунки відбуваються прямо у браузері.</p>",
-            termsText: "<h2>Умови використання</h2><p>Дані надаються для ознайомлення. Перевіряйте важливі цифри.</p>"
+            privText: "<h2>Політика конфіденційності</h2><p>Ваша конфіденційність — наш пріоритет. Ми не зберігаємо ваші дані. Усі розрахунки відбуваються прямо у вашому браузері.</p>",
+            termsText: "<h2>Умови використання</h2><p>Інструменти надаються для інформаційних цілей. Ми рекомендуємо перевіряти критичні фінансові дані в офіційних джерелах.</p>"
         },
         es: {
             res: "Resultado:", other: "Otras herramientas", cats: ["Básico %", "Diferencia", "Aumento"],
             l1: "Porcentaje %", l2: "Del número", l3: "Valor inicial", l4: "Valor final", l5: "Valor",
             unit: "Convertidor", cur: "Moneda", vat: "IVA", loan: "Préstamos", disc: "Descuento", tip: "Propina", bmi: "IMC",
-            footer: "SmartPercentage.io es su destino para cálculos de precisión. Resultados instantáneos y 100% exactos.",
-            seo: `<h2>¿Por qué usar nuestra calculadora?</h2><p>Admite tres modos principales para finanzas y análisis de datos.</p>`,
+            footer: "SmartPercentage.io es su destino preferido para cálculos de porcentaje de alta precisión. Ya sea un profesional de negocios que calcula márgenes de beneficio o un estudiante, nuestra herramienta ofrece resultados instantáneos. Utilizamos algoritmos avanzados para garantizar que cada cálculo sea 100% preciso.",
+            seo: `<h2>¿Por qué utilizar nuestra calculadora de porcentajes?</h2><p>En las finanzas, las compras y el análisis de datos, los porcentajes están en todas partes. SmartPercentage.io simplifica estas tareas. Nuestra herramienta admite tres modos: encontrar el porcentaje de un número, calcular la diferencia y añadir aumentos.</p><h2>Perfecto para el uso diario</h2><p>Calcule propinas, descuentos comerciales o crecimientos anuales en segundos con nuestra interfaz optimizada para móviles y escritorio.</p>`,
             privacy: "Privacidad", terms: "Términos",
-            privText: "<h2>Privacidad</h2><p>No almacenamos datos. Todo es local.</p>",
-            termsText: "<h2>Términos</h2><p>Uso informativo. Verifique los datos financieros.</p>"
+            privText: "<h2>Política de Privacidad</h2><p>Su privacidad es nuestra prioridad. SmartPercentage.io no almacena ningún dato numérico que ingrese. Todos los cálculos se realizan localmente en su navegador.</p>",
+            termsText: "<h2>Términos de Uso</h2><p>Nuestras herramientas se proporcionan solo con fines informativos. Recomendamos verificar los datos financieros críticos con fuentes oficiales.</p>"
         },
         de: {
             res: "Ergebnis:", other: "Andere Werkzeuge", cats: ["Basis %", "Differenz", "Zunahme"],
             l1: "Prozent %", l2: "Von Zahl", l3: "Startwert", l4: "Endwert", l5: "Wert",
             unit: "Konverter", cur: "Währung", vat: "MwSt", loan: "Kredit", disc: "Rabatt", tip: "Trinkgeld", bmi: "BMI",
-            footer: "SmartPercentage.io bietet hochpräzise Prozentrechnungen. 100% mathematische Genauigkeit.",
-            seo: `<h2>Warum unseren Rechner nutzen?</h2><p>Drei Modi für alle geschäftlichen Berechnungen.</p>`,
+            footer: "SmartPercentage.io ist Ihre Anlaufstelle für hochpräzise Prozentrechnungen. Ob Sie als Geschäftsmann Gewinnmargen berechnen oder als Student arbeiten, unser Tool liefert sofortige Ergebnisse. Wir verwenden fortschrittliche Algorithmen für 100% mathematische Genauigkeit.",
+            seo: `<h2>Warum unseren Prozentrechner nutzen?</h2><p>In Finanzen und Datenanalysen sind Prozentsätze allgegenwärtig. SmartPercentage.io vereinfacht diese Aufgaben. Unser Tool unterstützt die Berechnung von Anteilen, Differenzen und prozentualen Steigerungen.</p><h2>Ideal für Business und Alltag</h2><p>Berechnen Sie Trinkgelder, Rabatte oder Umsatzsteigerungen in Sekunden mit unserem professionellen Interface, das für Mobile und Desktop optimiert ist.</p>`,
             privacy: "Datenschutz", terms: "AGB",
-            privText: "<h2>Datenschutz</h2><p>Keine Datenspeicherung. Lokal im Browser.</p>",
-            termsText: "<h2>AGB</h2><p>Nur zu Informationszwecken.</p>"
+            privText: "<h2>Datenschutzrichtlinie</h2><p>Ihre Privatsphäre ist uns wichtig. SmartPercentage.io speichert keine von Ihnen eingegebenen Daten. Alle Berechnungen erfolgen lokal in Ihrem Browser.</p>",
+            termsText: "<h2>Nutzungsbedingungen</h2><p>Unsere Tools dienen nur zu Informationszwecken. Bitte überprüfen Sie wichtige Finanzdaten mit offiziellen Bankdokumenten.</p>"
         }
     };
 
@@ -183,7 +179,7 @@
         document.getElementById('langSelect').value = curLang;
         document.getElementById('lbl-result').innerText = l.res;
         document.getElementById('txt-other-tools').innerText = l.other;
-        document.getElementById('footer-full-text').innerText = l.footer;
+        document.getElementById('footer-full-text').innerHTML = l.footer;
         document.getElementById('link-privacy').innerText = l.privacy;
         document.getElementById('link-terms').innerText = l.terms;
         document.getElementById('seo-box').innerHTML = l.seo;
